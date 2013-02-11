@@ -1,9 +1,12 @@
-
-
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
+#user-view.editing .view,  #user-view .edit{
+    display: none;
+}
+#user-view .view,  #user-view.editing .edit{
+    display: inline-block;
+}
 
 
 

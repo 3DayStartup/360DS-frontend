@@ -1,7 +1,7 @@
 app = {};
 
 require.config( {
-	  //urlArgs: "bust=" + (new Date()).getTime(),
+	  urlArgs: "bust=" + (new Date()).getTime(),
 	  
       // 3rd party script alias names (Easier to type "jquery" than "libs/jquery-1.8.2.min")
       paths: {
@@ -36,7 +36,7 @@ require.config( {
 		
 } );
 
-require(["jquery", "underscore", "backbone", "app/router", "test", "bootstrap"], function($, _, Backbone, Router, Test, Bootstrap) {
+require(["jquery", "underscore", "backbone", "app/router", "bootstrap"], function($, _, Backbone, Router, Bootstrap) {
 	
 	
       
