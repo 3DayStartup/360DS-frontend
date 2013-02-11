@@ -1,18 +1,19 @@
-define(["jquery", "underscore", "backbone", "localstorage"], function($, _, Backbone) {
+define(["jquery", "underscore", "backbone"], function($, _, Backbone) {
   
-  var User = Backbone.Model.extend({
+	var UserModel = Backbone.Model.extend({
   		urlRoot: '/api-360ds.php/users',
   		
-  	});
-  
+	});
+	return UserModel;
+  /*
   var user = new User({
-  	id: "1"
+  	id: "1.json"
   	// name:"Dirty Harry",
     // email:"bro@freeemail.net",
     // company:"3 Day Startup",
     // portfolio:"thebest.com"
   });
-  
+ 
 	user.fetch({ 
 	  	error: function(model, response) {
 	  		console.log("error response");
@@ -32,4 +33,5 @@ define(["jquery", "underscore", "backbone", "localstorage"], function($, _, Back
 	user.fetch();
 	console.log("2nd name "+user.get('email'));
 	console.dir(user.toJSON());
+	*/
 });

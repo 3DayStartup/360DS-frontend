@@ -9,9 +9,27 @@
   // ----------
 define([
 	"jquery", "underscore", "backbone", 
-	"app/models/user"
+	"app/models/userModel", "app/views/userView"
 ], function($, _, Backbone, 
-	UserModel) {
-  
+	UserModel, UserView) {
+	/*
+	var userModel = new UserModel({id: "1.json"});
+	
+	var UserRouter = Backbone.Router.extend({
+		routes: {
+			""	: "index"
+		},
+		
+		initialize: function(){
+			this.userModel = new UserModel({id: "1.json"});
+			this.userView = new UserView({model: userModel});
+		},
+		
+		index: {
+			this.userModel.fetch();
+		}
+	});
+	*/
+	
 });
 
