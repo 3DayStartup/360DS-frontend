@@ -4,32 +4,34 @@ require.config( {
       // 3rd party script alias names (Easier to type "jquery" than "libs/jquery-1.8.2.min")
       paths: {
             // Core Libraries
-            "modernizr":"libs/modernizr-2.6.2-respond-1.1.0.min",
-            "jquery": "https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min",
-            "bootstrap": "libs/bootstrap.min",
-            "holder": "libs/holder",
-            "underscore": "libs/underscore-min",
-            "backbone": "libs/backbone-min"
+            modernizr:"libs/modernizr-2.6.2-respond-1.1.0.min",
+            jquery: "https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min",
+            bootstrap: "libs/bootstrap.min",
+            holder: "libs/holder",
+            underscore: "libs/underscore-min",
+            backbone: "libs/backbone-min",
+            localstorage: "libs/backbone.localStorage-min"
 
       },
 
       // Sets the configuration for your third party scripts that are not AMD compatible
       shim: {
 
-            "backbone": {
-                  "deps": [ "underscore", "jquery" ],
-                  "exports": "Backbone"  //attaches "Backbone" to the window object
+            backbone: {
+                  deps: [ "underscore", "jquery" ],
+                  exports: "Backbone"  //attaches "Backbone" to the window object
             },
-            "bootstrap": {
-                  "deps": [ "modernizr", "jquery", "holder" ],
-                  "exports": "bootstrap" 
+            bootstrap: {
+                  deps: [ "modernizr", "jquery", "holder" ],
+                  exports: "bootstrap" 
             }
+            
 
       } // end Shim Configuration
 		
 } )
 
-require(["jquery", "bootstrap"], function($) {
+require(["jquery", "app/router", "bootstrap"], function($, AppView) {
 	
       
        
