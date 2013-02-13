@@ -9,9 +9,9 @@
   // ----------
 define([
 	"jquery", "underscore", "backbone", 
-	"app/models/userModel", "app/views/userView"
+	"app/models/userModel", "app/collections/userList", "app/views/userView"
 ], function($, _, Backbone, 
-	UserModel, UserView) {
+	UserModel, UserList, UserView) {
 	/*
 	var userModel = new UserModel({id: "1.json"});
 	

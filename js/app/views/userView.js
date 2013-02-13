@@ -11,31 +11,18 @@ define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], function($,
 		},
 
 		render : function() {
-			console.log('render...');
+		//	console.log('render...');
 			var attributes = this.model.toJSON();
 			this.$el.html(this.template(attributes));
 			this.input = this.$('.edit');
-			console.log('[rendered]');
+		//	console.log('[rendered]');
 			return this;
 		},
 
 		events : {
-			"click #item-template" : "alerStatus",
-			"click .toggle" : "toggleDone",
-			"dblclick .view" : "edit",
-			"click a.destroy" : "clear",
+			"click .view" : "edit",
 			"keypress .edit" : "updateOnEnter",
 			"blur .edit" : "close"
-		},
-
-		alerStatus : function() {
-			console.log("modelView.event.alertStatus");
-			alert("Clicked user view!!");
-		},
-
-		toggleDone : function() {
-			console.log("modelView.event.toggleDone");
-			//this.model.toggle();
 		},
 
 		edit : function() {
@@ -61,14 +48,9 @@ define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], function($,
 			console.log("modelView.event.updateOnEnter");
 			if (e.keyCode == 13)
 				this.close();
-		},
-
-		clear : function() {
-			console.log("modelView.event.clear");
-			this.model.destroy();
 		}
 	});
-
+/*
 	//console.dir(UserView);
 	//console.dir(UserModel);
 	var userModel = new UserModel({
@@ -83,36 +65,36 @@ define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], function($,
 	});
 	userModel.save(null, {
 		error : function(model, response) {
-			console.log("save error response");
-			console.log(response);
+			// console.log("save error response");
+			// console.log(response);
 		},
 		success : function(model, response) {
-			console.log("save sucess response");
-			console.log(response);
-			console.log("fetch name " + userModel.get('email'));
+			// console.log("save sucess response");
+			// console.log(response);
+			// console.log("fetch name " + userModel.get('email'));
 		}
 	});
 
 	userModel.fetch({
 		error : function(model, response) {
-			console.log("error response");
-			console.log(response);
+			// console.log("error response");
+			// console.log(response);
 		},
 		success : function(model, response) {
-			console.log("sucess response");
-			console.log(response);
-			console.log("fetch name " + userModel.get('email'));
-			console.dir(userModel.toJSON());
-			console.log("userView");
+			// console.log("sucess response");
+			// console.log(response);
+			// console.log("fetch name " + userModel.get('email'));
+			// console.dir(userModel.toJSON());
+			// console.log("userView");
 			var userView = new UserView({
 				model : userModel
 			});
 			userView.render();
-			console.log(userView.el);
-			console.log("append");
+			// console.log(userView.el);
+			// console.log("append");
 			$("#user").append(userView.el);
 		}
 	});
-
+	*/
 	return UserView;
 }); 

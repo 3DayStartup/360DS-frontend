@@ -1,7 +1,7 @@
 define(["jquery", "underscore", "backbone"], function($, _, Backbone) {
   
 	var UserModel = Backbone.Model.extend({
-  		urlRoot: '/api-360ds.php/users',
+  		urlRoot: '/api-360ds.php/users'
   		
 	});
 	return UserModel;

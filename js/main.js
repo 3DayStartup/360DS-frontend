@@ -1,7 +1,7 @@
 app = {};
 
 require.config( {
-	  urlArgs: "bust=" + (new Date()).getTime(),
+	  urlArgs: "bust=v1"+ (new Date()).getTime(),
 	  
       // 3rd party script alias names (Easier to type "jquery" than "libs/jquery-1.8.2.min")
       paths: {
