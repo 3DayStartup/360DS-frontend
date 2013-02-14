@@ -9,27 +9,41 @@
   // ----------
 define([
 	"jquery", "underscore", "backbone", 
-	"app/models/userModel", "app/collections/userList", "app/views/userView"
+	"app/models/userModel", "app/collections/userList", "app/views/userView", "app/views/userBoardView"
 ], function($, _, Backbone, 
-	UserModel, UserList, UserView) {
-	/*
+	UserModel, UserList, UserView, UserBoardView) {
+	
 	var userModel = new UserModel({id: "1.json"});
 	
-	var UserRouter = Backbone.Router.extend({
+	var Router = new (Backbone.Router.extend({
 		routes: {
-			""	: "index"
+			"user/:id" : "showUser",
+			//default
+			"*path" : "index"
 		},
 		
 		initialize: function(){
+			console.log("$$$$$$ router init");
 			this.userModel = new UserModel({id: "1.json"});
-			this.userView = new UserView({model: userModel});
+			this.userView = new UserView({model: this.userModel});
+			
 		},
-		
-		index: {
+		start: function() {
+			Backbone.history.start({pushState: true});
+		},
+		index: function() {
+			console.log("!!!! index")
+			
+			$("#user").append(this.userView.el);
 			this.userModel.fetch();
+			
+			
+		},
+		showUser: function(id) {
+			console.log("showuder: "+id);	
 		}
-	});
-	*/
+	}));
 	
+	return Router;
 });
 

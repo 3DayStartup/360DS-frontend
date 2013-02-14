@@ -4,18 +4,18 @@ define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], function($,
 
 		id : 'user-view',
 
-		template : _.template($("#item-template").html()),
+		template : _.template($("#user-template").html()),
 
 		initialize : function() {
 			this.model.on('change', this.render, this);
 		},
 
 		render : function() {
-		//	console.log('render...');
+			console.log('render...');
 			var attributes = this.model.toJSON();
 			this.$el.html(this.template(attributes));
 			this.input = this.$('.edit');
-		//	console.log('[rendered]');
+			console.log('[rendered]');
 			return this;
 		},
 

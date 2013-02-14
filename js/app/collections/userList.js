@@ -4,6 +4,7 @@ define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], function($,
 		url : '/api-360ds.php/users.json'
 		//model : UserModel
 	});
+	/*
 	var userList = new UserList();
 	
 	userList.fetch({
@@ -18,6 +19,6 @@ define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], function($,
 	   		// console.dir(user.toJSON());
 		}
 	});
-	
+	*/
 	return UserList;
 }); 
