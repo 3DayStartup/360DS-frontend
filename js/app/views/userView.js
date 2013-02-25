@@ -3,7 +3,7 @@ function($, _, Backbone, UserModel) {
 
 	var UserView = Backbone.View.extend({
 
-		el : '#user',
+		el : $('#myModal'),
 		
 
 		template : _.template($("#user-template").html()),
@@ -15,8 +15,11 @@ function($, _, Backbone, UserModel) {
 		render : function() {
 			console.log('render...');
 			var attributes = this.model.toJSON();
+			console.dir(attributes);
 			this.$el.html(this.template(attributes));
 			this.input = this.$('.edit');
+			this.body = this.$('.modal-body');
+			
 			console.log('[rendered]');
 			return this;
 		},
@@ -29,7 +32,7 @@ function($, _, Backbone, UserModel) {
 
 		edit : function() {
 			console.log("modelView.event.edit");
-			this.$el.addClass("editing");
+			this.body.addClass("editing");
 			this.input.focus();
 		},
 

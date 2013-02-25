@@ -1,5 +1,5 @@
 define(['jquery', 'underscore', 'backbone', 'app/collections/userList', 'app/models/userModel',  'app/views/userView'], 
-function($, _, Backbone, UserList, UserModel) {
+function($, _, Backbone, UserList, UserModel, UserView) {
 	console.log("userListView");	
 	var UserListView = Backbone.View.extend({
 		
@@ -9,13 +9,11 @@ function($, _, Backbone, UserList, UserModel) {
 		template : _.template($("#user-list-template").html()),
 
 		initialize : function() {
-		 	 console.log("init userListView");
 		 	 //	this.collection.on('add', this.render, this);
 		 	 this.collection.on('reset', this.render, this);
 		 },
 
 		render : function() {
-			console.log('user boad view render...');
 			this.$el.html("")
 			this.collection.forEach(this.addOne, this);
 			
@@ -23,13 +21,22 @@ function($, _, Backbone, UserList, UserModel) {
 		},
 		
 		addOne: function(userModel) {
-			console.log("userListView.addone");
 			var attributes = userModel.toJSON();
-			this.$el.prepend(this.template(attributes));
-			console.dir($(this.$el));
+			this.$el.append(this.template(attributes));
 			//var userView = new UserView({model : userModel});
 			//this.$el.append(userView.render().el);
 			return this;
+		},
+		events : {
+			"click a.thumbnail" : "userDetails"
+		},
+		userDetails: function (event) {
+			var id = $(event.target).closest(".thumbnail").attr("data-id");
+			console.log("user-id: "+id);
+			
+      		this.userModel = new UserModel({'id': id+".json"});
+			this.userView = new UserView({model: this.userModel});
+			this.userModel.fetch();
 		}
 
 	});

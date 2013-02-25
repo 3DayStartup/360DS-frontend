@@ -5,9 +5,10 @@ define(["jquery", "underscore", "backbone"], function($, _, Backbone) {
 	defaults: function() {
 		return {
 			//'date' : new Date(),
+			
 			'email' : "your_email@here.com",
 			'name' : 'Firstname Lastname Here',
-			'participant_role' : 'My title here'
+			'profile_picture': "/img/3dslogo.png"
 		}
 	}
 });

@@ -1,12 +1,21 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-#user.editing .view,  #user .edit{
+a {
+	cursor: pointer;
+}
+
+#myModal .editing .view,  #myModal .edit{
     display: none;
 }
-#user .view,  #user.editing .edit{
+#myModal .view,  #myModal .editing .edit{
     display: inline-block;
 }
 
-
+/* ==========================================================================
+   Overide bootstap styles
+   ========================================================================== */
+.thumbnail {
+	display: inline-table;
+}
 
