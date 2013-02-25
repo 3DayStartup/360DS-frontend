@@ -50,7 +50,7 @@
 				</p>
 			</nav>
 			<div class="row-fluid">
-				<ul class="thumbnails">
+				<ul id="user-list" class="thumbnails">
 					<li>
 						<div class="thumbnail">
 							<img data-src="holder.js/180x180/social" alt="">
@@ -208,6 +208,17 @@
 				<a class="toggle"><%- email %></label>
 			</div>
 			<input class="edit" type="text" value="<%- email %>" />
+		</script>
+		
+		<script type="text/template" id="user-list-template">
+			<div class="thumbnail">
+				<img data-src="holder.js/180x180/social" alt="">
+				<h4>Name First Last</h4>
+				<h5>Role - space engineer</h5>
+				<button class="btn btn-small btn-block" type="button" data-toggle="modal" data-target="#myModal">
+					<%- email %> More info
+				</button>
+			</div>
 		</script>
 	</body>
 </html>

@@ -1,25 +1,12 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-#user-view.editing .view,  #user-view .edit{
+#user.editing .view,  #user .edit{
     display: none;
 }
-#user-view .view,  #user-view.editing .edit{
+#user .view,  #user.editing .edit{
     display: inline-block;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

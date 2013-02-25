@@ -1,8 +1,10 @@
 define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], function($, _, Backbone, UserModel) {
 	console.log("UserList");
 	var UserList = Backbone.Collection.extend({
-		url : '/api-360ds.php/users.json'
-		//model : UserModel
+		url : '/api-360ds.php/users.json',
+		model : UserModel,
+		initialize : function(models, options) {
+		}
 	});
 	/*
 	var userList = new UserList();

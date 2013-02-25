@@ -39,9 +39,10 @@ require(["jquery", "underscore", "backbone", "app/router", "bootstrap"], functio
 
 	console.log("##### Router start");
 	$(function() {
-		Router.start()
+		router = new Router();
+		router.start()
 	});
-	console.log(Router);
+	
 	/*
 	 // Init the router
 	 var router = new Router();

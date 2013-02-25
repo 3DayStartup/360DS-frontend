@@ -1,14 +1,16 @@
-define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], function($, _, Backbone, UserModel) {
+define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], 
+function($, _, Backbone, UserModel) {
 
 	var UserView = Backbone.View.extend({
 
-		id : 'user-view',
+		el : '#user',
+		
 
 		template : _.template($("#user-template").html()),
 
-		initialize : function() {
-			this.model.on('change', this.render, this);
-		},
+		 initialize : function() {
+			 this.model.on('change', this.render, this);
+		 }, 
 
 		render : function() {
 			console.log('render...');
