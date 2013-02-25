@@ -5,11 +5,11 @@ function($, _, Backbone, UserList, UserModel) {
 		
 		el : '#user-list',
 		
-		//template : _.template($("#user-list-template").html()),
+		template : _.template($("#user-list-template").html()),
 
 		initialize : function() {
 		 	 console.log("init userListView");
-		 	 //this.collection.on('add', this.render, this);
+		 	 //	this.collection.on('add', this.render, this);
 		 	 this.collection.on('reset', this.render, this);
 		 },
 
@@ -25,8 +25,8 @@ function($, _, Backbone, UserList, UserModel) {
 		
 		addOne: function(userModel) {
 			console.log("userListView.addone");
-			var userView = new UserView({model : userModel});
-			this.$el.append(userView.render().el);
+			//var userView = new UserView({model : userModel});
+			//this.$el.append(userView.render().el);
 			return this;
 		}
 

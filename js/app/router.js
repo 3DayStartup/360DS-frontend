@@ -23,33 +23,34 @@ define([
 		
 		initialize: function(){
 			console.log("$$$$$$ router init");
-			//this.userList = new UserList({model: UserModel});
-			//this.userListView = new UserListView({collection: this.userList});
-			// this.userList.fetch({
-				// error: function(model, response) {
-			  		// console.log("error response");
-			    	// console.log(response);
-			    // },
-			  	// success: function(model, response){
-			  		// console.log("sucess response");
-			  		// console.log(response);
-					// // console.log("fetch name "+user.get('email'));
-			   		// // console.dir(user.toJSON());
-				// }
-			// });			
+			this.userList = new UserList({model: UserModel});
+			this.userListView = new UserListView({collection: this.userList});
+			this.userList.fetch({
+				error: function(model, response) {
+			  		console.log("error response");
+			    	console.log(response);
+			    },
+			  	success: function(model, response){
+			  		console.log("sucess response");
+			  		console.log(response);
+					// console.log("fetch name "+user.get('email'));
+			   		// console.dir(user.toJSON());
+				}
+			});			
 			
 		},
 		start: function() {
 			Backbone.history.start({pushState: true});
 		},
 		index: function() {
-			this.userModel = new UserModel({id: "1.json"});
-			this.userView = new UserView({model: this.userModel});
-			this.userModel.fetch();
 			
 		},
 		showUser: function(id) {
-			console.log("------ showuder: "+id);	
+			console.log("------ showuder: "+id);
+			this.userModel = new UserModel({id: "1.json"});
+			this.userView = new UserView({model: this.userModel});
+			this.userModel.fetch();
+				
 		}
 	});
 	
