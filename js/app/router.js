@@ -32,7 +32,11 @@ define([
 		index: function() {
 			this.userList = new UserList({model: UserModel});
 			this.userListView = new UserListView({collection: this.userList});
-			this.userList.fetch();
+			this.userList.fetch({
+				success: function() {
+					$("#page-loader").hide();
+				}
+				});
 		},
 		showUser: function(id) {
 			console.log("------ showuder: "+id);
