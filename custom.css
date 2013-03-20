@@ -1,0 +1,186 @@
+/* 
+
+******************************************************************************
+
+NOTE: When updating the Business Turnkey theme to a newer version,
+make sure to copy this file and your /custom-images folder to your hard drive.  
+After the update, recopy custom.css and /custom-images to the Business Turnkey 
+theme directory.
+
+******************************************************************************
+
+
+Use this CSS file to add your own custom styles to Business Turnkey!  If you need to add any custom images, use the 'custom-images' folder located in the root of the theme directory.
+
+If an element you'd like to customize with CSS doesn't appear below, use Firebug or Google Chrome's inspector to identify class names, ID names, and element hierarchy.
+
+*/
+
+
+
+/* ! TYPOGRAPHY
+============================================================================================= */
+
+div, td, p {}
+
+p {}
+
+h1 {}
+h2 {}
+h3 {}
+h4 {}
+h5 {}
+
+
+/* ! ELEMENTS */
+
+input {}
+
+a {}
+a:hover {}
+
+/* Buttons */ .btn {}
+
+
+/* ! HEADER
+============================================================================================= */
+
+/* !  Super Header */
+#super-header {}
+#super-header li {}
+#super-header #search {}
+#super-header .social {}
+
+
+/* ! Top Navigation */
+#top-nav {}
+#top-nav li {}
+
+/* !  Header */
+#header {}
+
+/* !  Logo */
+/* If logo is text */ #header .logo, #header .logo-img  {}
+/* If logo is image */ #header .logo img, #header .logo-img img {}
+
+
+/* !  SLIDER 
+============================================================================================= */
+
+#slideshow {}
+#slideshow .slide {}
+
+#slideshow .slide-content {}
+
+/* Image and video container */ #slideshow .slide-img {}
+/* Images and videos */ #slideshow .slide-img img, #slideshow .slide-img embed, #slideshow .slide-img object {}
+
+/* Video */
+#slideshow .video .play-video {}
+#slideshow .video .video-embed {}
+
+/* !  Slider Navigation */
+#slideshow #slide-nav {}
+#slideshow #slide-nav a {}
+#slideshow #slide-nav .prev {}
+#slideshow #slide-nav .next {}
+#slideshow #slide-nav .hidden {}
+
+/* !  MAIN NAVIGATION 
+============================================================================================= */
+
+#main-nav {}
+#main-nav>li {}
+#main-nav li {}
+
+/* Dropdowns */
+
+#main-nav>li>ul {}
+#main-nav>li>ul ul {}
+	#main-nav>li>ul li ul {}
+	#main-nav>li>ul li a {}
+	#wrapper #main-nav>li>ul li a {}
+
+/* ! BLURB AREA
+============================================================================================= */
+
+#contact-us {}
+#contact-us .blurb {}
+
+/* !  Button */
+#contact-us .contact-us {}
+/* !  subtext */ #contact-us .contact-us em {}
+
+
+/* !  HOMEPAGE WIDGETS
+============================================================================================= */
+
+#homepage-widgets {}
+#homepage-widgets .widget {}
+
+
+
+/* ! POSTS
+============================================================================================= */
+
+.post {}
+.post .date {}
+.post .date strong {}
+.post .post-content {}
+.post .info {}
+.post .info .author {}
+.post .info .comments {}
+
+
+/* ! Comments */
+#comments-area .avatar {}
+.commentlist .comment p {}
+#content .commentlist li {}
+#content .commentlist {}
+
+
+/* Previous and next */
+#blog-nav .prev {}
+#blog-nav .next {}
+
+/* ! Pages */
+.page #main-content .post-content {}
+
+
+/* ! COLUMNS & SIDEBARS 
+============================================================================================= */
+
+#sidebar .widget {}
+
+.three-col #main-content {}
+.three-col #main-content img {}
+.three-col #sidebar {}
+.three-col #sidebar .sidebar {}
+
+.two-col #main-content {}
+.two-col #sidebar {}
+
+.one-col #sidebar {}
+.one-col #sidebar .widget {}
+.one-col .post .post-content {}
+.one-col .post-meta {}
+.one-col .post-meta ul {}
+.one-col .post-meta ul li {}
+.one-col .post-content-container {}
+
+/* Search Widget */ #content .widget_search input {}
+
+
+/* !  FOOTER
+============================================================================================= */
+
+#footer-container {}
+
+#footer .info {}
+#footer-widgets {}
+#footer-widgets .widget {}
+
+#super-footer {}
+.powered-by-salesforce {}
+
+

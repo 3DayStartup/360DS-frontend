@@ -1,0 +1,82 @@
+/*
+Theme Name: 360 Day Startup Turnkey Instructions
+Theme URI: http://www.livelylabs.com
+Description:
+Author: Lively Labs
+Author URI: http://www.livelylabs.com
+
+
+
+/* ! RESET */
+
+
+/* Type Default */
+
+div, td, p, ul { line-height: 1.5; font-size: 14px }
+
+p { margin-bottom: 20px}
+
+h2 { font-size: 28px; line-height: 1; margin-bottom: 20px }
+h3 { font-size: 22px; line-height: 1; margin-bottom: 20px }
+h4 { font-size: 16px; font-weight: bold; line-height: 1; margin-bottom: 10px}
+
+/* ! CLEAR FIX  */
+.group:after { content: "."; display: block; height: 0; clear: both; visibility: hidden }
+* html .group { height: 1% }
+*:first-child+html .group { min-height: 1px }
+
+input { border-radius: none; -moz-border-radius: none; -webkit-border-radius: none; padding: 10px }
+
+
+a {
+ 	color: #CC0000;
+}
+
+a:hover {
+	color: black;
+}
+
+
+/* Elements */
+
+#instructions {
+	width: 75%;
+	margin: 10px auto 50px auto;
+}
+
+.instructionHeader {
+	text-align: center;
+
+}
+
+.indent {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.top {
+	color: white; font-size: 50%;
+	float: right;
+
+}
+
+.top:hover {
+	color: yellow;
+}
+
+body, td, p, p a, input, span { font-family: Georgia, Palatino, Times New Roman, serif}
+
+a { text-decoration: none }
+
+h1 { font-size: 40px; }
+h2 { font-size: 35px; line-height: 1.1 }
+h2.updates { font-size: 38px }
+h3 { font-size: 24px; background-color: black; color: white; padding: 15px 10px; font-family: Helvetica, Arial, sans-serif; }
+h4 { font-size: 18px; background-color: #666666; color: white; padding: 15px 10px; font-family: Helvetica, Arial, sans-serif; }
+
+.figure {
+margin: 0 0 0 0;
+padding: 0 0 0 0;
+font-size: 10px;
+color: #333;
+}
