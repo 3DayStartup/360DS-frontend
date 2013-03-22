@@ -1,0 +1,34 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+a {
+	cursor: pointer;
+}
+
+#myModal .editing .view,  #myModal .edit{
+    display: none;
+}
+#myModal .view,  #myModal .editing .edit{
+    display: inline-block;
+}
+#page-loader {
+	background-image: url("../img/loader-bar.gif");
+	background-repeat: no-repeat;
+	background-position: bottom center;
+	text-align: center;
+	width: 220px;
+	height: 40px;
+	display: block;
+	position:fixed;
+	top: 50%;
+	left: 40%;
+	z-index: 100;
+	
+}
+/* ==========================================================================
+   Overide bootstap styles
+   ========================================================================== */
+.thumbnail {
+	display: inline-table;
+}
+
