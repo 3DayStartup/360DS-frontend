@@ -12,7 +12,7 @@ a {
     display: inline-block;
 }
 #page-loader {
-	background-image: url("../img/loader-bar.gif");
+	background-image: url("../../images/userboard/loader-bar.gif");
 	background-repeat: no-repeat;
 	background-position: bottom center;
 	text-align: center;

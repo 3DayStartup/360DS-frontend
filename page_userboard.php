@@ -14,6 +14,7 @@ Template Name: User Board
 <div id="content" class="group <?php echo $options['numcols']; ?>">
 
 	<div id="main-content">
+		<div id="page-loader">Loading...</div>
 	<?php bloginfo('template_url'); ?>
 	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 	 <?php the_post_thumbnail(); ?>
