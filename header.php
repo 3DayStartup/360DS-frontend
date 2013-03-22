@@ -43,7 +43,7 @@
 
 <body <?php body_class(); ?>>
 
-<div id="super-header" class="group" data-jonathan="test">
+<div id="super-header" class="group">
 	<div class="wrap">
 
 		<?php wp_nav_menu( array( 'container' => '', 'menu_id' => 'top-nav', 'theme_location' => 'turnkey_secondary', 'depth' => '1') ); ?>
