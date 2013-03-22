@@ -1,7 +1,7 @@
 /*
-Theme Name: 360 Day Startup Turnkey Instructions
+Theme Name: Turnkey Instructions
 Theme URI: http://www.livelylabs.com
-Description:
+Description: 
 Author: Lively Labs
 Author URI: http://www.livelylabs.com
 
@@ -46,7 +46,7 @@ a:hover {
 
 .instructionHeader {
 	text-align: center;
-
+	
 }
 
 .indent {
@@ -57,7 +57,7 @@ a:hover {
 .top {
 	color: white; font-size: 50%;
 	float: right;
-
+	
 }
 
 .top:hover {
