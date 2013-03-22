@@ -38,14 +38,20 @@
 		<link href="<?php echo THEME_URI; ?>/custom.css" rel="stylesheet" type="text/css" media="screen" />
 	<?php } ?>
 
+<!-- user board files -->
+<meta name="viewport" content="width=device-width">
+<link href="<?php echo THEME_CSS; ?>/userboard/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" /> 
+<link href="<?php echo THEME_CSS; ?>/userboard/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="screen" /> 
+<link href="<?php echo THEME_CSS; ?>/userboard/main.css" rel="stylesheet" type="text/css" media="screen" />
 
+<script data-main="<?php echo THEME_JS; ?>/userboard/main" src="<?php echo THEME_JS; ?>/userboard/require.js"></script>
+<script src="js/libs/"></script>
 </head>
 
 <body <?php body_class(); ?>>
 
 <div id="super-header" class="group">
 	<div class="wrap">
-
 		<?php wp_nav_menu( array( 'container' => '', 'menu_id' => 'top-nav', 'theme_location' => 'turnkey_secondary', 'depth' => '1') ); ?>
 		<?php get_search_form(); ?>
 		<ul class="social">
