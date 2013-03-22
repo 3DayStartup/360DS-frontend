@@ -34,7 +34,7 @@ function($, _, Backbone, UserList, UserModel, UserView) {
 			var id = $(event.target).closest(".thumbnail").attr("data-id");
 			console.log("user-id: "+id);
 			
-      		this.userModel = new UserModel({'id': id+".json"});
+      		this.userModel = new UserModel({'id': id});
 			this.userView = new UserView({model: this.userModel});
 			this.userModel.fetch();
 		}

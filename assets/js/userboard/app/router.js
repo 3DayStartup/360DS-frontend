@@ -30,13 +30,9 @@ define([
 			Backbone.history.start({pushState: true});
 		},
 		index: function() {
-			this.userList = new UserList({model: UserModel});
+			this.userList = new UserList();
+			console.log(this.userList);
 			this.userListView = new UserListView({collection: this.userList});
-			this.userList.fetch({
-				success: function() {
-					$("#page-loader").hide();
-				}
-				});
 		},
 		showUser: function(id) {
 			console.log("------ showuder: "+id);

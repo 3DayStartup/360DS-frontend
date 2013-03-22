@@ -12,7 +12,11 @@ require.config({
 		holder : "libs/holder",
 		underscore : "libs/underscore-min",
 		backbone : "libs/backbone-min",
+		backfire : "libs/backbone-firebase",
+		backbone : "libs/backbone-min",
+		firebase : "https://cdn.firebase.com/v0/firebase",
 		localstorage : "libs/backbone.localStorage-min"
+		
 
 	},
 
@@ -29,7 +33,12 @@ require.config({
 		},
 		underscore : {
 			exports : "_"
+		},
+		backfire : {
+			deps : ["firebase"],
+			exports: "Backfire"
 		}
+		
 
 	} // end Shim Configuration
 

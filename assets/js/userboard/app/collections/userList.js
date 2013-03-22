@@ -1,10 +1,10 @@
-define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], function($, _, Backbone, UserModel) {
+define(['jquery', 'underscore', 'backbone', 'firebase', 'backfire', 'app/models/userModel'], 
+	function($, _, Backbone, Firebase, Backfire, UserModel) {
+	
 	console.log("UserList");
-	var UserList = Backbone.Collection.extend({
-		url : '/api-360ds.php/users.json',
+	var UserList = Backbone.Firebase.Collection.extend({
 		model : UserModel,
-		initialize : function(models, options) {
-		}
+		firebase: "https://360ds.firebaseio.com"
 	});
 	/*
 	var userList = new UserList();
