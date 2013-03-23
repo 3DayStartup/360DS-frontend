@@ -1,14 +1,23 @@
-define(["jquery", "underscore", "backbone"], function($, _, Backbone) {
+define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, Backbone, BackboneForm) {
 
 	var UserModel = Backbone.Model.extend({
-	urlRoot: '/api-360ds.php/users',
+		
+	schema: {
+        participant_role:      { type: 'Select', options: ['Developer', 'Designer', 'Wildcard', 'Mentor'] },
+        name:       'Text',
+        email:      { validators: ['required', 'email'] },
+        birthday:   'Date',
+        profile_picture: 'Text',
+        password:   'Password'
+	},
 	defaults: function() {
 		return {
 			//'date' : new Date(),
 			
 			'email' : "your_email@here.com",
 			'name' : 'Firstname Lastname Here',
-			'profile_picture': "/img/3dslogo.png"
+			'profile_picture': "/wp-content/themes/online_3ds/assets/images/userboard/3dslogo.png",
+			'participant_role': "role"
 		}
 	}
 });

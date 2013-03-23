@@ -12,8 +12,8 @@ require.config({
 		holder : "libs/holder",
 		underscore : "libs/underscore-min",
 		backbone : "libs/backbone-min",
+		backbone_forms : "libs/backbone-forms.min",
 		backfire : "libs/backbone-firebase",
-		backbone : "libs/backbone-min",
 		firebase : "https://cdn.firebase.com/v0/firebase",
 		localstorage : "libs/backbone.localStorage-min"
 	},
@@ -45,8 +45,8 @@ require(["jquery", "underscore", "backbone", "app/router", "bootstrap"], functio
 
 	console.log("##### Router start");
 	$(function() {
-		router = new Router();
-		router.start()
+		window.router = new Router();
+		window.router.start()
 	});
 	
 	/*

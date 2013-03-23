@@ -8,12 +8,16 @@
   // Todo Model
   // ----------
 define([
-	"jquery", "underscore", "backbone", 
-	"app/models/userModel", "app/collections/userList", "app/views/userView", "app/views/userListView"
-], function($, _, Backbone, 
-	UserModel, UserList, UserView, UserListView) {
+	"jquery", "underscore", "backbone",
+	"app/models/userModel", 
+	"app/collections/userList", 
+	"app/views/userView", "app/views/userListView"
+], function($, _, Backbone,
+	UserModel, 
+	UserList, 
+	UserView, UserListView) {
 	
-	var AppRouter = Backbone.Router.extend({
+	var Router = Backbone.Router.extend({
 		routes: {
 			"user/:id" : "showUser",
 			"(/)user-board.html#user/:id" : "showUser",
@@ -22,8 +26,13 @@ define([
 		},
 		
 		initialize: function(){
+			
 			console.log("$$$$$$ router init");
-					
+			this.userList = new UserList();
+			
+			this.userModel = new UserModel();
+			console.log(this.userModel);
+			//this.userList.add(this.userModel.toJSON());
 			
 		},
 		start: function() {
@@ -31,8 +40,11 @@ define([
 		},
 		index: function() {
 			this.userList = new UserList();
+			this.userListView = new UserListView({collection: this.userList});;
+			
 			console.log(this.userList);
-			this.userListView = new UserListView({collection: this.userList});
+			
+			
 		},
 		showUser: function(id) {
 			console.log("------ showuder: "+id);
@@ -41,6 +53,6 @@ define([
 		}
 	});
 	
-	return AppRouter;
+	return Router;
 });
 

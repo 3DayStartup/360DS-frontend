@@ -45,7 +45,7 @@
 <link href="<?php echo THEME_CSS; ?>/userboard/main.css" rel="stylesheet" type="text/css" media="screen" />
 
 <script data-main="<?php echo THEME_JS; ?>/userboard/main" src="<?php echo THEME_JS; ?>/userboard/require.js"></script>
-<script src="js/libs/"></script>
+
 </head>
 
 <body <?php body_class(); ?>>

@@ -15,6 +15,10 @@ Template Name: User Board
 
 	<div id="main-content">
 		<div id="page-loader">Loading...</div>
+		<ul id="content">content here</ul>
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		</div>
+
 	<?php bloginfo('template_url'); ?>
 	<?php if(have_posts()) : while(have_posts()) : the_post(); ?>
 	 <?php the_post_thumbnail(); ?>
@@ -65,7 +69,7 @@ Template Name: User Board
 				<div class="view">
 					<a class="toggle"><%- email %></label>
 				</div>
-				<input class="edit" type="text" value="<%- email %>" />
+				<input class="edit" type="text" data-key="email" value="<%- email %>" />
 			</div>
 			<div class="modal-footer">
 				<button class="btn" data-dismiss="modal" aria-hidden="true">
@@ -77,6 +81,8 @@ Template Name: User Board
 			</div>
 			
 		</script>
+		
+		
 		
 		<script type="text/template" id="user-list-template">
 			<a class="thumbnail" data-id="<%= id %>" data-toggle="modal" data-target="#myModal"><li>
