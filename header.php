@@ -43,6 +43,7 @@
 <link href="<?php echo THEME_CSS; ?>/userboard/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" /> 
 <link href="<?php echo THEME_CSS; ?>/userboard/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" media="screen" /> 
 <link href="<?php echo THEME_CSS; ?>/userboard/main.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="<?php echo THEME_CSS; ?>/userboard/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen" />
 
 <script data-main="<?php echo THEME_JS; ?>/userboard/main" src="<?php echo THEME_JS; ?>/userboard/require.js"></script>
 

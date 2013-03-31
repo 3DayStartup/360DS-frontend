@@ -8,8 +8,8 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			var $notLoggedIn = $('<span class="notLoggedIn"></span>');
 			var $loggedIn = $('<span class="loggedIn" style="display:none;"></span>');
 			// TODO: remove inline styles when ready
-			$notLoggedIn.append('<span class="login" data-provider="facebook" style="margin-left:10px;color:blue" >Facebook Login</span><span class="login" data-provider="github" style="margin-left:10px;color:blue">Github Login</span>');
-			$loggedIn.append('<span class="userInfo"></span><span class="logout" style="margin-left:10px;color:blue">Logout</span>');
+			$notLoggedIn.append('<button class="login btn btn-primary" data-provider="facebook" ><i class="icon-facebook"></i> Facebook Login</button> <button class="login btn btn-primary" data-provider="github" ><i class="icon-github"></i> Github Login</button>');
+			$loggedIn.append('<span class="userInfo"></span> <button class="logout btn">Logout</button>');
 			this.$('#header').append($notLoggedIn);
 			this.$('#header').append($loggedIn);
 
