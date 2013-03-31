@@ -13,7 +13,7 @@ require.config({
 		underscore : "libs/underscore-min",
 		backbone : "libs/backbone-min",
 		localstorage : "libs/backbone.localStorage-min",
-		md5: "libs/md5.js"
+		md5: "libs/md5"
 	},
 
 	// Sets the configuration for your third party scripts that are not AMD compatible
