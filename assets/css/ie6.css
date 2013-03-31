@@ -1,0 +1,27 @@
+.play-video { 
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=75); /* this works in IE6, IE7, and IE8 */ }
+.play-video:hover { 
+	filter: progid:DXImageTransform.Microsoft.Alpha(opacity=90); /* this works in IE6, IE7, and IE8 */}
+	
+#homepage-widgets { width: 1050px; overflow: hidden }
+#homepage-widgets .last { border: 0; margin: 0}
+#slideshow #slide-nav { height: 1% }
+#slideshow #slide-nav a { position: relative; /* Fixes clipping issue in IE 6 */}
+
+.post .date, .post .content { position: relative }
+.post .date { margin-right: -60px; left: 0}
+.post .info .comments, .post .info .author { display: inline; width: 40% }
+
+.keep-reading { height: 1%;}
+.keep-reading a { position: relative; }
+
+.logo { width: 270px; }
+
+#content { width: 960px }
+
+#slideshow .slide a, .contact-us, .btn, #main-nav a span {behavior: none }
+
+#slideshow .slide a { margin: 1px }
+.two-col #sidebar .widget { width: 200px; overflow: hidden}
+
+img { -ms-interpolation-mode: bicubic; }

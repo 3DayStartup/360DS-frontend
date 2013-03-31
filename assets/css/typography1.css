@@ -1,0 +1,70 @@
+/* TYPOGRAPHY OPTION 1 */
+
+@font-face {
+	font-family: 'BebasNeueRegular';
+	src: url('fonts/BebasNeue-webfont.eot');
+	src: local('?'), url('fonts/BebasNeue-webfont.woff') format('woff'), url('fonts/BebasNeue-webfont.ttf') format('truetype'), url('fonts/BebasNeue-webfont.svg#webfontDYsPqAbQ') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Elements */
+
+body, td, p, p a, input, span { font-family: Georgia, Palatino, Times New Roman, serif}
+
+a { text-decoration: none }
+
+h1, h2, h3, h4, .logo, #main-nav, #top-nav, #super-header .menu, .btn, #slideshow .video .play-video, #header .menu ul {font-family: 'Bebas Neue', 'BebasNeueRegular', 'Bebas', 'League Gothic', Helvetica, Arial, Sans-serif; font-weight: normal; letter-spacing: .08em}
+
+h1 { font-size: 40px; }
+h2 { font-size: 36px; line-height: 1.1 }
+h2.updates { font-size: 38px }
+h3 { font-size: 32px }
+h4 { font-size: 26px }
+
+
+.btn { font-size: 22px; letter-spacing: 2px;  }
+
+#blog-nav a { font-size: 18px; letter-spacing: 1px; line-height: 18px }
+
+#contact-us .blurb { font-size: 18px }
+#contact-us .contact-us { line-height: 1.1}
+#contact-us .contact-us em { font-family: Georgia, Palatino, 'Times New Roman', serif; letter-spacing: 0 }
+
+#comment .reply { font-style: italic }
+
+/* Specific */
+
+#top-nav li a, #super-header .menu { font-size: 16px; line-height: 24px}
+.logo { font-size: 38px; }
+#wrapper #main-nav li a { font-size: 26px; line-height: 25px }
+#wrapper #main-nav .active a { line-height: 35px}
+
+#wrapper #header .menu>ul>li>a { font-size: 26px; line-height: 25px }
+#wrapper #header .menu ul .active a { line-height: 35px}
+
+#footer .widget h3 { font-size: 24px }
+#footer .widget, #footer .widget p { font-size: 12px }
+
+#wrapper #sidebar ul li a{ font-style: italic; }
+#wrapper #sidebar ul li { padding-left: 30px; line-height: 25px}
+
+#slideshow .btn { line-height: .9}
+
+.btn { line-height: 25px}
+
+#wrapper #sidebar .widget h4 { line-height: 20px}
+
+#main-nav ul li a { font-family: Georgia, Palatino, 'Times New Roman', serif; letter-spacing: 0; }
+
+
+
+/* Posts */
+
+.post h3 { font-size: 28px }
+.post .date { letter-spacing: 2px; line-height: 1 }
+.post-content .info {  font-size: 11px }
+.post-content .info a { font-style: italic; text-decoration: underline; }
+.post-content .info a:hover { text-decoration: none;}
+.post .keep-reading .btn { letter-spacing: 1px; line-height: 22px; font-size: 18px}
+

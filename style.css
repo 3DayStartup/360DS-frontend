@@ -1,0 +1,33 @@
+/*
+Theme Name: online 3DS
+Theme URI: http://jackrabbitmobile.com
+Description: Copy of business turnkey
+Version: 1.0
+Author: jackrabbitmobile.com
+Author URI: http://www.jackrabbitmobile.com
+Tags: black, blue, white, two-columns, one-column, three-columns, fixed-width, threaded-comments, sticky-post, custom-menu
+License: http://www.gnu.org/licenses/gpl.html
+
+If you'd like to customize this theme with css, please use the custom.css file located in the root of the theme directory.
+
+*/
+
+/* DEFAULT WORDPRESS STYLES
+============================================================================= */
+
+.commentlist .bypostauthor { border-left:3px #666666 solid; }
+
+.sticky { padding:20px 0; }
+.sticky .post-content { border:1px #7f7f7f solid; }
+
+.aligncenter { display:block; margin:20px auto; }
+.alignleft { float:left; margin:5px 15px 5px 0; }
+.alignright { float:right; margin:5px 0 5px 15px; }
+.alignnone { margin:5px 10px; }
+
+.gallery-caption { font-size:.8em; padding:5px; }
+
+.wp-caption { border:1px solid #ddd; text-align:center; background-color:#f3f3f3; padding-top:4px; margin:20px 10px; -moz-border-radius:3px; -khtml-border-radius:3px; -webkit-border-radius:3px; border-radius:3px; }
+.wp-caption-text { font-size:.8em; padding:10px; margin-bottom:0; }
+.wp-caption img { margin:0; padding:0; border:0 none; }
+.wp-caption-dd { font-size:11px; line-height:17px; padding:0 4px 5px; margin:0; }

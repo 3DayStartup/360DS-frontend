@@ -1,0 +1,88 @@
+/* TYPOGRAPHY OPTION 2 */
+
+@font-face {
+	font-family: 'EauSansBook';
+	src: url('fonts/eau_sans_book-webfont.eot');
+	src: local('?'), url('fonts/eau_sans_book-webfont.woff') format('woff'), url('fonts/eau_sans_book-webfont.ttf') format('truetype'), url('fonts/eau_sans_book-webfont.svg#webfontDLSVu5xQ') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'EauSansBlack';
+	src: url('fonts/eau_sans_black-webfont.eot');
+	src: local('?'), url('fonts/eau_sans_black-webfont.woff') format('woff'), url('fonts/eau_sans_black-webfont.ttf') format('truetype'), url('fonts/eau_sans_black-webfont.svg#webfontMQNm8GEE') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'EauSansBold';
+	src: url('fonts/eau_sans_bold-webfont.eot');
+	src: local('?'), url('fonts/eau_sans_bold-webfont.woff') format('woff'), url('fonts/eau_sans_bold-webfont.ttf') format('truetype'), url('fonts/eau_sans_bold-webfont.svg#webfont9EFQqcWQ') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+/* Elements */
+
+#footer p strong { font-family: 'Eau Sans Bold', 'EauSansBold', Helvetica, Arial, Sans-serif; font-weight: normal; font-size: 14px }
+
+body, td, p, p a, input, span { font-family: "Lucida Grande", Verdana, Tahoma, Arial, sans-serif}
+
+a { text-decoration: none }
+
+h1, h2, h3, h4, .logo, #top-nav, #super-header .menu, #slideshow .video .play-video {font-family: 'Eau Sans Bold', 'EauSansBold', Helvetica, Arial, Sans-serif; font-weight: normal; letter-spacing: -1px}
+
+.btn, #main-nav, #header .menu {font-family: 'Eau Sans Book', 'EauSansBook', Helvetica, Arial, Sans-serif}
+
+#main-nav .active a, #header .menu .active a { line-height: 34px}
+
+h1 { font-size: 40px; margin-bottom: 30px }
+h2 { font-size: 36px; line-height: 1.1 }
+h2.updates { font-size: 38px }
+h3 { font-size: 32px }
+h4 { font-size: 26px }
+
+.btn { font-size: 14px; letter-spacing: 0 }
+
+#blog-nav a { font-size: 18px }
+
+#homepage-widgets h3 a, #homepage-widgets { font-size: 20px; letter-spacing: 0 }
+#homepage-widgets .widget p { font-size: 12px}
+
+#contact-us .blurb { font-size: 18px; font-family: 'Eau Sans Book', 'EauSansBook', Helvetica, Arial, Sans-serif }
+#contact-us .contact-us { line-height: 1.1; font-size: 22px; font-family: 'Eau Sans Black', 'EauSansBlack', Helvetica, Arial, Sans-serif; font-weight: normal }
+#contact-us .contact-us em { font-style: normal; font-family:  "Lucida Grande", Verdana, Tahoma, Arial, sans-serif; letter-spacing: 0 }
+
+#sidebar .widget h4, #sidebar .widget h a { font-size: 22px}
+#sidebar .widget, #sidebar .widget p { font-size: 12px; line-height: 1.8}
+#sidebar ul li a { font-size: 12px; line-height: 2.3; padding-left: 5px}
+
+
+
+/* Specific */
+
+#top-nav, #super-header .menu { font-size: 15px }
+.logo { font-size: 34px; font-family: 'EauSansBold', 'EauSansBlack', "Lucida Grande", "Verdana", sans-serif; letter-spacing: -1px; line-height: 60px }
+
+#slideshow h2 a { font-size: 28px; font-family: 'Eau Sans Bold', 'EauSansBold', Helvetica, Arial, Sans-serif; font-weight: normal }
+
+#main-nav a, #header .menu a { font-size: 18px }
+
+#footer p { font-family: 'Eau Sans Book', 'EauSansBook', Helvetica, Arial, Sans-serif; line-height: 1.8; font-size: 13px}
+#footer .widget h3 { font-size: 16px; letter-spacing: 0; margin-bottom: 10px}
+#footer .widget, #footer .widget p { font-family:  "Lucida Grande", Verdana, Tahoma, Arial, sans-serif; font-size: 12px; line-height: 2 }
+
+#blog-nav .btn a {font-size: 28px; font-family: 'Eau Sans Bold', 'EauSansBold', Helvetica, Arial, Sans-serif; font-size: 12px }
+
+/* Posts */
+
+.post h3 { font-size: 28px; line-height: 1.1; margin-top: 5px }
+.post .date {font-family: 'Eau Sans Bold', 'EauSansBold', Helvetica, Arial, Sans-serif;line-height: 1.2}
+.post-text p { line-height: 170%}
+.post-content .info {  font-size: 11px }
+.post-content .info a { font-weight: bold; }
+
+.post .keep-reading .btn { font-size: 14px; }
