@@ -1,45 +1,54 @@
-define(['jquery', 'underscore', 'backbone', 'app/models/userModel'], 
-function($, _, Backbone, UserModel) {
+define(['jquery', 'underscore', 'backbone', 'app/models/userModel', 'md5'], 
+function($, _, Backbone, UserModel, md5) {
 
 	var UserView = Backbone.View.extend({
 
 		el : $('#myModal'),
 		
 
-		template : _.template($("#user-template").html()),
+		template : _.template('<div class="modal-header">\
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>\
+				<h3 id="myModalLabel">Modal header <%- name %></h3>\
+			</div>\
+			<div class="modal-body">\
+				<div class="view"><a class="toggle"><%- email %></a>\
+			</div>\
+				<input class="edit" type="text" data-key="email" value="<%- email %>" />\
+			</div>\
+			<div class="modal-footer">\
+				<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>\
+				<button class="btn btn-primary">Save changes</button>\
+			</div>'),
 
 		  initialize : function() {
-		  	console.log("init userview");
+		 	this.setGravatarImage();
 		 	this.model.on('change', this.render, this);
 			this.render();
 		  }, 
 
 		render : function(model) {
-			console.log('render...');
 			var attributes = this.model.toJSON();
-			console.dir(attributes);
 			this.$el.html(this.template(attributes));
 			this.input = this.$('.edit');
 			this.body = this.$('.modal-body');
-			
-			console.log('[rendered]');
 			return this;
 		},
-
+		setGravatarImage: function(){
+			if(this.model.get("gravatar_email") && this.model.get("gravatar_email") !== "") {
+				var md5Hash = md5(this.model.get("gravatar_email"));
+				this.model.set("profile_picture", "http://www.gravatar.com/avatar/"+md5Hash)
+			}
+		},
 		events : {
 			"click .view" : "edit",
 			"keypress .edit" : "updateOnEnter",
 			"blur .edit" : "close"
 		},
-
 		edit : function() {
-			console.log("modelView.event.edit");
 			this.body.addClass("editing");
 			this.input.focus();
 		},
-
 		close : function() {
-			console.log("modelView.event.close");
 			var value = this.input.val();
 			if (!value) {
 				console.log("clear");
@@ -50,10 +59,8 @@ function($, _, Backbone, UserModel) {
 					email : value
 				});
 				this.body.removeClass("editing");
-				
 			}
 		},
-
 		updateOnEnter : function(e) {
 			console.log("modelView.event.updateOnEnter");
 			if (e.keyCode == 13) this.close();

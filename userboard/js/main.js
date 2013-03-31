@@ -1,7 +1,7 @@
 app = {};
 
 require.config({
-	urlArgs : "bust=" + (new Date()).getTime(),
+	urlArgs : "bust=v1" + (new Date()).getTime(),
 
 	// 3rd party script alias names (Easier to type "jquery" than "libs/jquery-1.8.2.min")
 	paths : {
@@ -12,18 +12,21 @@ require.config({
 		holder : "libs/holder",
 		underscore : "libs/underscore-min",
 		backbone : "libs/backbone-min",
-		backbone_forms : "libs/backbone-forms.min",
 		backfire : "libs/backbone-firebase",
+		backbone : "libs/backbone-min",
 		firebase : "https://cdn.firebase.com/v0/firebase",
-		firebaseAuthClient: "https://cdn.firebase.com/v0/firebase-auth-client",
 		localstorage : "libs/backbone.localStorage-min",
-		md5: "libs/md5"
+		md5: "libs/md5.js"
+		
+
 	},
+
+	// Sets the configuration for your third party scripts that are not AMD compatible
 	shim : {
 
 		backbone : {
 			deps : ["underscore", "jquery"],
-			exports : "Backbone"
+			exports : "Backbone" //attaches "Backbone" to the window object
 		},
 		bootstrap : {
 			deps : ["modernizr", "jquery", "holder"],
@@ -35,24 +38,40 @@ require.config({
 		backfire : {
 			deps : ["firebase"],
 			exports: "Backfire"
-		},
-		Firebase: {
-			deps: [],
-			exports: "Firebase"
-		},
-		FirebaseAuthClient: {
-			deps: [],
-			exports: "FirebaseAuthClient"
 		}
-	}
+		
+
+	} // end Shim Configuration
+
 });
 
 require(["jquery", "underscore", "backbone", "app/router", "bootstrap"], function($, _, Backbone, Router, Bootstrap) {
 
+	console.log("##### Router start");
 	$(function() {
-		window.router = new Router();
-		window.router.start();
+		router = new Router();
+		router.start()
 	});
 	
+	/*
+	 // Init the router
+	 var router = new Router();
+
+	 //Event Handlers
+	 $('#county-list').on("click", ".ui-li", function(){
+	 var countyId = $(this).attr("data-id");
+	 router.navigate("county/"+countyId, {trigger: true});
+	 });
+
+	 $('#senate-list').on("click", ".ui-li", function(){
+	 var senateId = $(this).attr("data-id");
+	 router.navigate("senate/"+senateId, {trigger: true});
+	 });
+
+	 $('#house-list').on("click", ".ui-li", function(){
+	 var senateId = $(this).attr("data-id");
+	 router.navigate("house/"+senateId, {trigger: true});
+	 });
+	 */
 
 }); 

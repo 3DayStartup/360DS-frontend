@@ -8,48 +8,40 @@
   // Todo Model
   // ----------
 define([
-	"jquery", "underscore", "backbone",
+	"jquery", "underscore", "backbone", "firebaseAuthClient",
 	"app/models/userModel", 
 	"app/collections/userList", 
-	"app/views/userView", "app/views/userListView"
-], function($, _, Backbone,
+	"app/views/userView", "app/views/userListView", "app/views/userAuth"
+], function($, _, Backbone, FirebaseAuthClient,
 	UserModel, 
 	UserList, 
-	UserView, UserListView) {
+	UserView, UserListView, UserAuth) {
+
+
+// Belongs in a View.
+	currentUser = undefined;		
 	
 	var Router = Backbone.Router.extend({
 		routes: {
 			"user/:id" : "showUser",
 			"(/)user-board.html#user/:id" : "showUser",
 			//default
-			"*path" : "index"
+			"user-board/" : "userBoard",
+			"": "index"
 		},
-		
+		index: function(){
+		},
 		initialize: function(){
-			
-			console.log("$$$$$$ router init");
-			this.userList = new UserList();
-			
-			this.userModel = new UserModel();
-			console.log(this.userModel);
-			//this.userList.add(this.userModel.toJSON());
-			
+			this.userList = userList = new UserList();
+			this.userAuth = new UserAuth();
 		},
 		start: function() {
 			Backbone.history.start({pushState: true});
 		},
-		index: function() {
-			this.userList = new UserList();
-			this.userListView = new UserListView({collection: this.userList});;
-			
-			console.log(this.userList);
-			
-			
+		userBoard: function() {
+			this.userListView = new UserListView({collection: this.userList});
 		},
 		showUser: function(id) {
-			console.log("------ showuder: "+id);
-			
-				
 		}
 	});
 	

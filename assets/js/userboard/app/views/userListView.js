@@ -5,12 +5,16 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		
 		el : $('#content'),
 		
-		template : _.template($("#user-list-template").html()),
+		template : _.template('<a class="thumbnail" data-id="<%= id %>" data-toggle="modal" data-target="#myModal"><li>\
+				<img src="<%= profile_picture %>" alt="">\
+				<h4><%= name %></h4>\
+				<h5><%= participant_role %></h5>\
+				<h5><%= email %></h5>\
+			</li></a>'),
 
 		initialize : function() {
-			console.log("init userListView")
 			 this.$el.html('<ul id="user-list" class="thumbnails"></ul>');
-			 this.ul = $('#user-list');
+			 this.$ul = this.$('#user-list');
 			 this.collection.on('add', this.addOne, this);
 		 	 this.collection.on('change', this.render, this);
 		 	 this.collection.on('reset', this.render, this);
@@ -18,20 +22,21 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		 },
 
 		render : function() {
-			console.log("render list")
+			this.$el.html("");
+			this.$ul.html("");
+			$("#page-loader").show();			
 			this.collection.forEach(this.addOne, this);
 			if (this.collection.length){
 				$("#page-loader").hide();
 			}
-			this.$el.html(this.ul);
-			console.log(this.ul);
+			this.$el.html(this.$ul);
 			return this;
 		},
 		
 		addOne: function(userModel) {
-			console.log(userModel.id);
+
 			var attributes = userModel.toJSON();
-			this.ul.append(this.template(attributes));
+			this.$ul.append(this.template(attributes));
 			var userView = new UserView({model : userModel});
 			this.$el.append(userView.render().el);
 			$("#page-loader").hide();
@@ -53,31 +58,9 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
     			
     			//console.log('Title changed to "' + titleEditor.getValue() + '".');
 			});
-			
-		
-			//this.userView = new UserView({model: this.userModel});
-			//this.userView.render();
-			//this.userModel.fetch();
 		}
 
 	});
-	/*
-	var userList = new UserList();
-	userList.fetch({
-		error: function(model, response) {
-	  		console.log("UserListView error response");
-	    	console.log(response);
-	    },
-	  	success: function(model, response){
-	  		console.log("UserListView sucess response");
-	  		console.log(response);
-	  		var userListView = new UserListView({collection: userList});
-			userListView.render();
-			console.log(userListView.el);
-		}
-	});
-	
-	*/
 
 	return UserListView;
 }); 

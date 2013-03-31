@@ -7,48 +7,20 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
         name:       'Text',
         email:      { validators: ['required', 'email'] },
         birthday:   'Date',
-        profile_picture: 'Text',
-        password:   'Password'
+        gravatar_email: 'Text',
+        password:   'Password',
+        providerId: 'Text'
 	},
 	defaults: function() {
 		return {
-			//'date' : new Date(),
-			
 			'email' : "your_email@here.com",
 			'name' : 'Firstname Lastname Here',
-			'profile_picture': "/wp-content/themes/online_3ds/assets/images/userboard/3dslogo.png",
-			'participant_role': "role"
+			'gravatar_email': "",
+			'participant_role': "role",
+			"providerId": ""
 		}
 	}
 });
 return UserModel;
-/*
- var user = new User({
- id: "1.json"
- // name:"Dirty Harry",
- // email:"bro@freeemail.net",
- // company:"3 Day Startup",
- // portfolio:"thebest.com"
- });
 
- user.fetch({
- error: function(model, response) {
- console.log("error response");
- console.log(response);
- },
- success: function(model, response){
- console.log("sucess response");
- console.log(response);
- console.log("fetch name "+user.get('email'));
- console.dir(user.toJSON());
- }
- });
-
- console.log("1st name "+user.get('email'));
- console.dir(user.toJSON());
- //user.set({company:"Jackrabbit Mobile"});
- user.fetch();
- console.log("2nd name "+user.get('email'));
- console.dir(user.toJSON());
- */
 });
