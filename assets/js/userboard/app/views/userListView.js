@@ -5,7 +5,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		
 		el : $('#content'),
 		
-		template : _.template('<a class="thumbnail" data-id="<%= id %>" data-toggle="modal" data-target="#myModal"><li>\
+		template : _.template('<a class="thumbnail" data-id="<%= id %>" ><li>\
 				<img src="<%= profile_picture %>" alt="">\
 				<h4><%= name %></h4>\
 				<h5><%= participant_role %></h5>\
@@ -13,7 +13,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			</li></a>'),
 
 		initialize : function() {
-			 this.$el.html('<ul id="user-list" class="thumbnails"></ul>');
+			 this.$el.html('<h3>This section is restricted to members.</h3><ul id="user-list" class="thumbnails"></ul>');
 			 this.$ul = this.$('#user-list');
 			 this.collection.on('add', this.addOne, this);
 		 	 this.collection.on('change', this.render, this);
@@ -22,14 +22,14 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		 },
 
 		render : function() {
-			this.$el.html("");
+			this.$el.html("<h3>This section is restricted to members.</h3>");
 			this.$ul.html("");
 			$("#page-loader").show();			
 			this.collection.forEach(this.addOne, this);
 			if (this.collection.length){
 				$("#page-loader").hide();
 			}
-			this.$el.html(this.$ul);
+			this.$el.append(this.$ul);
 			return this;
 		},
 		
@@ -46,18 +46,16 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			"click a.thumbnail" : "userDetails"
 		},
 		userDetails: function (event) {
-			var id = $(event.target).closest(".thumbnail").attr("data-id");
-			this.userModel = this.collection.get(id);
-      		var form = new Backbone.Form({
-        		model: this.userModel
-    		}).render();
-    		$('#myModal').append(form.el);
+			// var id = $(event.target).closest(".thumbnail").attr("data-id");
+			// this.userModel = this.collection.get(id);
+   //    		var form = new Backbone.Form({
+   //      		model: this.userModel
+   //  		}).render();
+   //  		$('#myModal').append(form.el);
     		
-    		form.on('blur', function(form) {
-    			form.commit();
-    			
-    			//console.log('Title changed to "' + titleEditor.getValue() + '".');
-			});
+   //  		form.on('blur', function(form) {
+   //  			form.commit();
+			// });
 		}
 
 	});

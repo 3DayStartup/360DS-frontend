@@ -17,16 +17,26 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			userRef = new Firebase('https://360ds.firebaseio.com');
 			authClient = new FirebaseAuthClient(userRef, function(error, user) {
 				  if (error) {
-				    console.log(error);
+				    // console.log(error);
 				  } else if (user) {
 				  	currentUser = user;
 				    $('#header .loggedIn').show();
 				    $('#header .loggedIn .userInfo').text('User ID: ' + user.id + ', Provider: ' + user.provider);
 				    $('#header .notLoggedIn').hide();
+
+				    // This is a bad hack. 
+				    // We should use a class to target the links
+				    $('a[href="http://online.3daystartup.org/edit-profile/"]').show();
+				    $('#content h3').hide();
+				    
 				  } else {
 				    $('#header .loggedIn').hide();
 				    $('#header .loggedIn  .userInfo').text("");
 				    $('#header .notLoggedIn').show();
+
+				    // This is a bad hack. 
+				    // We should use a class to target the links
+				    $('a[href="http://online.3daystartup.org/edit-profile/"]').hide();
 				  }
 				});
 
@@ -42,7 +52,6 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    	newUser = new UserModel({
 				    		"name": user.name,
 				    		"email": "",
-				    		"gravatar_email": "",
 				    		"providerId": user.provider+":"+user.id,
 				    		"profile_picture": "https://graph.facebook.com/"+user.username+"/picture?type=normal"
 				    	});
@@ -51,7 +60,6 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			    		newUser = new UserModel({
 				    		"name": user.name,
 				    		"email": user.email,
-				    		"gravatar_email": user.email,
 				    		"providerId": user.provider+":"+user.id,
 				    		"profile_picture": user.avatar_url
 				    	});

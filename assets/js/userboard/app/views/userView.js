@@ -4,7 +4,6 @@ function($, _, Backbone, UserModel, md5) {
 	var UserView = Backbone.View.extend({
 
 		el : $('#myModal'),
-		
 
 		template : _.template('<div class="modal-header">\
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>\
@@ -21,7 +20,6 @@ function($, _, Backbone, UserModel, md5) {
 			</div>'),
 
 		  initialize : function() {
-		 	this.setGravatarImage();
 		 	this.model.on('change', this.render, this);
 			this.render();
 		  }, 
@@ -32,12 +30,6 @@ function($, _, Backbone, UserModel, md5) {
 			this.input = this.$('.edit');
 			this.body = this.$('.modal-body');
 			return this;
-		},
-		setGravatarImage: function(){
-			if(this.model.get("gravatar_email") && this.model.get("gravatar_email") !== "") {
-				var md5Hash = md5(this.model.get("gravatar_email"));
-				this.model.set("profile_picture", "http://www.gravatar.com/avatar/"+md5Hash)
-			}
 		},
 		events : {
 			"click .view" : "edit",

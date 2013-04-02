@@ -34,6 +34,11 @@ define([
 		initialize: function(){
 			this.userList = userList = new UserList();
 			this.userAuth = new UserAuth();
+
+			$('a[href="http://online.3daystartup.org/edit-profile/"]').on("click", function(event){
+				event.preventDefault();
+				alert("Trigger edit page if currentUser is not undefined");
+			});
 		},
 		start: function() {
 			Backbone.history.start({pushState: true});

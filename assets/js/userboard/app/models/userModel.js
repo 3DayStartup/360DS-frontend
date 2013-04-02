@@ -7,7 +7,6 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
         name:       'Text',
         email:      { validators: ['required', 'email'] },
         birthday:   'Date',
-        gravatar_email: 'Text',
         password:   'Password',
         providerId: 'Text'
 	},
