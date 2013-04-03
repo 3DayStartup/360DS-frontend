@@ -4,7 +4,6 @@ in ryans template file
 a { color: #000000}
 a:hover { color: #415f78}
 
-#content ul li { background: url(li.gif) 0 9px no-repeat; padding: 2px 0 2px 15px }
 
 .post table { border-left: 1px #cccccc solid; border-top: 1px #cccccc solid}
 .post table td, .post table th { padding: 5px 10px; border-bottom: 1px #cccccc solid; ; border-right: 1px #cccccc solid;}

@@ -3,7 +3,7 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
 	var UserModel = Backbone.Model.extend({
 		
 	schema: {
-        participant_role:      { type: 'Select', options: ['Developer', 'Designer', 'Wildcard', 'Mentor'] },
+        participant_role:      { type: 'Select', options: ['participent', 'organizer', 'mentor'] },
         name:       'Text',
         email:      { validators: ['required', 'email'] },
         providerId: 'Text'

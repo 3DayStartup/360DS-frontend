@@ -53,7 +53,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    		"name": user.name,
 				    		"email": "",
 				    		"providerId": user.provider+":"+user.id,
-				    		"profile_picture": "https://graph.facebook.com/"+user.username+"/picture?type=normal"
+				    		"profile_picture": "https://graph.facebook.com/"+user.username+"/picture?type=large"
 				    	});
 				    	
 			    	} else if(user.provider === "github") {
