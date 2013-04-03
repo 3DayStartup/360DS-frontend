@@ -5,12 +5,12 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		
 		el : $('#content'),
 		
-		template : _.template('<a class="thumbnail" data-id="<%= id %>" ><li>\
+		template : _.template('<li data-id="<%= id %>" class="thumbnail">\
 				<img src="<%= profile_picture %>" alt="">\
 				<h4><%= name %></h4>\
 				<h5><%= participant_role %></h5>\
 				<h5><%= email %></h5>\
-			</li></a>'),
+			</li>'),
 
 		initialize : function() {
 			 this.$el.html('<h3>This section is restricted to members.</h3><ul id="user-list" class="thumbnails"></ul>');
@@ -41,21 +41,6 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			this.$el.append(userView.render().el);
 			$("#page-loader").hide();
 			return this;
-		},
-		events : {
-			"click a.thumbnail" : "userDetails"
-		},
-		userDetails: function (event) {
-			// var id = $(event.target).closest(".thumbnail").attr("data-id");
-			// this.userModel = this.collection.get(id);
-   //    		var form = new Backbone.Form({
-   //      		model: this.userModel
-   //  		}).render();
-   //  		$('#myModal').append(form.el);
-    		
-   //  		form.on('blur', function(form) {
-   //  			form.commit();
-			// });
 		}
 
 	});

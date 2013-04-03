@@ -13,7 +13,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			this.$('#header').append($notLoggedIn);
 			this.$('#header').append($loggedIn);
 
-			var currentUser = undefined;
+			
 			userRef = new Firebase('https://360ds.firebaseio.com');
 			authClient = new FirebaseAuthClient(userRef, function(error, user) {
 				  if (error) {
@@ -66,8 +66,33 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			    	}
 			    	var userExists = userList.where({"providerId": providerId});
 			    	if(userExists.length === 0 && typeof(newUser) !== "undefined" )  {
-			    		userList.add(newUser.attributes);		    		
+			    		userList.add(newUser.attributes);
+			    		$('a[href="http://online.3daystartup.org/edit-profile/"]').hide();		    		
+			    	} else {
+			    		$('a[href="http://online.3daystartup.org/edit-profile/"]').show();
 			    	}
+
+			    	$('a[href="http://online.3daystartup.org/edit-profile/"]').on("click", function(event){
+						event.preventDefault();						
+						var providerId = user.provider+":"+user.id;
+						var retrievedUser = userList.where({"providerId": providerId});
+						if(retrievedUser.length !== 0) {							
+				      		var form = new Backbone.Form({
+				        		model: retrievedUser[0]
+				    		}).render();
+				    		var $modal = $('<div>');
+				    		$modal.addClass('modal');
+				    		$modal.html(form.el);
+				    		$modal.prepend('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>');
+				    		$modal.modal();				    		
+				    		form.on('blur', function(form) {
+				    			form.commit();
+							});
+
+
+						}						
+					});
+
 			    }
 			});			
 		},

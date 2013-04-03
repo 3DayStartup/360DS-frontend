@@ -6,15 +6,12 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
         participant_role:      { type: 'Select', options: ['Developer', 'Designer', 'Wildcard', 'Mentor'] },
         name:       'Text',
         email:      { validators: ['required', 'email'] },
-        birthday:   'Date',
-        password:   'Password',
         providerId: 'Text'
 	},
 	defaults: function() {
 		return {
 			'email' : "your_email@here.com",
 			'name' : 'Firstname Lastname Here',
-			'gravatar_email': "",
 			'participant_role': "role",
 			"providerId": ""
 		}
