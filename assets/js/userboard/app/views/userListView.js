@@ -5,11 +5,11 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		
 		el : $('#content'),
 		
-		template : _.template('<li data-id="<%= id %>" class="thumbnail">\
-				<img src="<%= profile_picture %>" alt="">\
-				<h4><%= name %></h4>\
-				<h5><%= participant_role %></h5>\
-				<h5><%= email %></h5>\
+		template : _.template('<li data-id="<%= id %>" class="user-block <%= participant_role %>">\
+				<div class="user-block-reflection"></div>\
+				<img src="<%= profile_picture %>&s=144" alt="">\
+				<h5><%= name %></h5>\
+				<h6><%= participant_role %></h6>\
 			</li>'),
 
 		initialize : function() {

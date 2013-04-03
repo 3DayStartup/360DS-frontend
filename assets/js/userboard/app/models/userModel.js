@@ -3,10 +3,20 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
 	var UserModel = Backbone.Model.extend({
 		
 	schema: {
-        participant_role:      { type: 'Select', options: ['participent', 'organizer', 'mentor'] },
-        name:       'Text',
-        email:      { validators: ['required', 'email'] },
-        providerId: 'Text'
+        participant_role:	{ type: 'Select', options: ['participent', 'organizer', 'mentor'] },
+        name:				'Text',
+        email:      		{ validators: ['required', 'email'] },
+        providerId: 		'Text',
+        company: 			'Text',
+        team: 				'Text',
+        fieldOfStudy: 		'Text',
+        degreeProgram:		{ type: 'Select', options: ['High School', 'Associate', 'Bachlor', 'Master', 'Doctorate', 'Juris doctorate'] },
+        university: 		'Text',
+        website:			{ validators: [ 'url'] },
+        linkedInUser:			'Text',
+        twitterUser:			'Text'
+        
+        
 	},
 	defaults: function() {
 		return {
