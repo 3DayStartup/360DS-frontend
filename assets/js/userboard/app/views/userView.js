@@ -45,7 +45,6 @@ function($, _, Backbone, UserModel, md5) {
 			
 		},
 		updateOnEnter : function(e) {
-			console.log("modelView.event.updateOnEnter");
 			if (e.keyCode == 13) this.close();
 		},
 		editModal: function(){

@@ -1,6 +1,5 @@
 define(['jquery', 'underscore', 'backbone', 'backbone_forms', 'app/collections/userList', 'app/models/userModel',  'app/views/userView'], 
-function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
-	console.log("userListView");	
+function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {	
 	var UserListView = Backbone.View.extend({
 		
 		el : $('#content'),
@@ -32,6 +31,10 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			this.$el.append(this.$ul);
 			return this;
 		},
+
+		events: {
+			"click .user-block": "userModal",
+		},
 		
 		addOne: function(userModel) {
 
@@ -41,7 +44,28 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			this.$el.append(userView.render().el);
 			$("#page-loader").hide();
 			return this;
-		}
+		},
+
+		userModal: function(event){
+			var $userCard = $(event.currentTarget)
+			var $modal = $('<div>');
+
+			var userId = $userCard.data("id");
+			var user = this.collection.get(userId);
+
+			var form = new Backbone.Form({
+        		model: user
+    		}).render();
+
+    		$modal.addClass('modal');
+    		$modal.html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>');
+    		$modal.append('<img src="'+user.get("profile_picture")+'" />');
+    		$modal.append(form.el);
+    		
+    		$modal.find("input").attr("readonly", "readonly");
+    		$modal.find("select").attr("disabled", "true");
+    		$modal.modal();			
+		},
 
 	});
 

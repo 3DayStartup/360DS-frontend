@@ -6,7 +6,7 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
         participant_role:	{ type: 'Select', options: ['participent', 'organizer', 'mentor'] },
         name:				'Text',
         email:      		{ validators: ['required', 'email'] },
-        providerId: 		'Text',
+        profile_picture: 	'Text',
         company: 			'Text',
         team: 				'Text',
         fieldOfStudy: 		'Text',
@@ -22,7 +22,7 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
 		return {
 			'email' : "your_email@here.com",
 			'name' : 'Firstname Lastname Here',
-			'participant_role': "role",
+			'participant_role': "participent",
 			"providerId": ""
 		}
 	}

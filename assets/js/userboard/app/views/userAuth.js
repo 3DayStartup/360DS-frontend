@@ -88,7 +88,14 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    		form.on('blur', function(form) {
 				    			form.commit();
 							});
-
+							$modal.on('keypress', 'input', function(event) {
+				    			if(event.charCode == 13) {
+									form.commit();
+								}
+							});
+							$modal.on('change', 'select', function(event) {
+								form.commit();
+							});
 
 						}						
 					});
@@ -100,7 +107,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		userList: undefined,
 		events: {
 			"click #header .login": "login",
-			"click #header .logout": "logout",
+			"click #header .logout": "logout"
 		},
 		login: function(event){
 			var provider = $(event.currentTarget).data("provider");
