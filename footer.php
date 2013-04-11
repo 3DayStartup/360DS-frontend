@@ -47,8 +47,9 @@
 	</div>
 <?php } ?>     
 
-<?php wp_footer(); ?>
+<div id="user-details"></div>
 
+<?php wp_footer(); ?>
 </body>
 
 

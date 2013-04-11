@@ -48,6 +48,7 @@ function($, _, Backbone, UserModel, md5) {
 			if (e.keyCode == 13) this.close();
 		},
 		editModal: function(){
+			console.log("editing");
 			this.$el.modal();
 			this.$('.modal-body').addClass("editing");
 		}

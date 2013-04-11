@@ -10,11 +10,11 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
         company: 			'Text',
         team: 				'Text',
         fieldOfStudy: 		'Text',
-        degreeProgram:		{ type: 'Select', options: ['High School', 'Associate', 'Bachlor', 'Master', 'Doctorate', 'Juris doctorate'] },
+        degreeProgram:		{ type: 'Select', options: ['High School', 'Associate', 'Bachlor', 'Master', 'Doctorate', 'Juris Doctorate'] },
         university: 		'Text',
         website:			{ validators: [ 'url'] },
-        linkedInUser:			'Text',
-        twitterUser:			'Text'
+        linkedinUrl:			'Text',
+        twitterUrl:			'Text'
         
         
 	},
@@ -23,7 +23,14 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
 			'email' : "your_email@here.com",
 			'name' : 'Firstname Lastname Here',
 			'participant_role': "participent",
-			"providerId": ""
+	     	'company': 			'',
+        	'team': 			'',
+        	'fieldOfStudy': 	'',
+        	'degreeProgram':	'',
+        	'university': 		'',
+        	'website':			'',
+        	'linkedinUrl':		'',
+        	'twitterUrl': 		''
 		}
 	}
 });

@@ -5,11 +5,27 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		el : $('#content'),
 		
 		template : _.template('<li data-id="<%= id %>" class="user-block <%= participant_role %>">\
-				<div class="user-block-reflection"></div>\
-				<img src="<%= profile_picture %>&s=144" alt="">\
+				<div class="user-block-profile-picture" style="background-image:url(<%= profile_picture %>&s=204);" alt="<%= name %> profiles picture"></div>\
 				<h5><%= name %></h5>\
 				<h6><%= participant_role %></h6>\
 			</li>'),
+			
+		template_userView : _.template('\
+				<img class="thumbnail modal-profile-picture" src="<%= profile_picture %>&s=180" />\
+				<h5>Hello <%= name %></h5>\
+				<dl class="dl-horizontal">\
+  					<dt>Role </dt><dd><%= participant_role %></dd>\
+  					<dt>Email </dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>\
+  					<dt>Company </dt><dd><%= company %></dd>\
+  					<dt>Team </dt><dd><%= team %></dd>\
+  					<dt>Studied </dt><dd><%= fieldOfStudy %></dd>\
+  					<dt>Degree </dt><dd><%= degreeProgram %></dd>\
+  					<dt>School </dt><dd><%= university %></dd>\
+  					<dt>Site </dt><dd><%= website %></dd>\
+				</dl>\
+				<a class="btn" href="<%= twitterUrl %>"><i class="icon-twitter"></i> Twitter</a> \
+				<a class="btn" href="<%= linkedinUrl %>"><i class="icon-linkedin"></i> LinkedIn</a>\
+				'),
 
 		initialize : function() {
 			 this.$el.html('<h3>This section is restricted to members.</h3><ul id="user-list" class="thumbnails"></ul>');
@@ -18,7 +34,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		 	 this.collection.on('change', this.render, this);
 		 	 this.collection.on('reset', this.render, this);
 		 	 this.render();
-		 },
+		},
 
 		render : function() {
 			this.$el.html("<h3>This section is restricted to members.</h3>");
@@ -48,22 +64,25 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 
 		userModal: function(event){
 			var $userCard = $(event.currentTarget)
-			var $modal = $('<div>');
+			var $modal = $('#user-details');
 
 			var userId = $userCard.data("id");
 			var user = this.collection.get(userId);
 
-			var form = new Backbone.Form({
-        		model: user
-    		}).render();
-
+			// var form = new Backbone.Form({
+        		// model: user
+    		// }).render();
+			
+			console.log(user.toJSON());
+			
     		$modal.addClass('modal');
     		$modal.html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>');
-    		$modal.append('<img src="'+user.get("profile_picture")+'" />');
-    		$modal.append(form.el);
+    		//$modal.append('<img src="'+user.get("profile_picture")+'&s=204" />');
+    		$modal.append(this.template_userView(user.toJSON()));
+    		//$modal.append(form.el);
     		
-    		$modal.find("input").attr("readonly", "readonly");
-    		$modal.find("select").attr("disabled", "true");
+    		//$modal.find("input").attr("readonly", "readonly");
+    		//$modal.find("select").attr("disabled", "true");
     		$modal.modal();			
 		},
 
