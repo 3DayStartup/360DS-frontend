@@ -4,14 +4,14 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		el: "body.page",
 		initialize: function(){
 
-			var $header = $('#header');
+			var $header = $('#super-header');
 			var $notLoggedIn = $('<span class="notLoggedIn"></span>');
 			var $loggedIn = $('<span class="loggedIn" style="display:none;"></span>');
 			// TODO: remove inline styles when ready
 			$notLoggedIn.append('<button class="login btn btn-primary" data-provider="facebook" ><i class="icon-facebook"></i> Facebook Login</button> <button class="login btn btn-primary" data-provider="github" ><i class="icon-github-alt"></i> Github Login</button>');
-			$loggedIn.append('<span class="userInfo"></span> <button class="logout btn">Logout</button>');
-			this.$('#header').append($notLoggedIn);
-			this.$('#header').append($loggedIn);
+			$loggedIn.append('<!--<span class="userInfo"></span>--> <a class="btn" href="http://online.3daystartup.org/edit-profile/"><i class="icon-user	"></i>Edit Profile</a> <button class="logout btn-mini btn-info">Logout</button>');
+			this.$('#super-header').append($notLoggedIn);
+			this.$('#super-header').append($loggedIn);
 
 			
 			userRef = new Firebase('https://360ds.firebaseio.com');
@@ -20,9 +20,9 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    // console.log(error);
 				  } else if (user) {
 				  	currentUser = user;
-				    $('#header .loggedIn').show();
-				    $('#header .loggedIn .userInfo').text('User ID: ' + user.id + ', Provider: ' + user.provider);
-				    $('#header .notLoggedIn').hide();
+				    $('#super-header .loggedIn').show();
+				    $('#super-header .loggedIn .userInfo').text('User ID: ' + user.id + ', Provider: ' + user.provider);
+				    $('#super-header .notLoggedIn').hide();
 
 				    // This is a bad hack. 
 				    // We should use a class to target the links
@@ -30,9 +30,9 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    $('#content h3').hide();
 				    
 				  } else {
-				    $('#header .loggedIn').hide();
-				    $('#header .loggedIn  .userInfo').text("");
-				    $('#header .notLoggedIn').show();
+				    $('#super-header .loggedIn').hide();
+				    $('#super-header .loggedIn  .userInfo').text("");
+				    $('#super-header .notLoggedIn').show();
 
 				    // This is a bad hack. 
 				    // We should use a class to target the links
@@ -106,8 +106,8 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		// Binded a fake userList relationship
 		userList: undefined,
 		events: {
-			"click #header .login": "login",
-			"click #header .logout": "logout"
+			"click #super-header .login": "login",
+			"click #super-header .logout": "logout"
 		},
 		login: function(event){
 			var provider = $(event.currentTarget).data("provider");

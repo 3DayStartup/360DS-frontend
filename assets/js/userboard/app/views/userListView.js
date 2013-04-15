@@ -11,23 +11,32 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			</li>'),
 			
 		template_userView : _.template('\
-				<img class="thumbnail modal-profile-picture" src="<%= profile_picture %>&s=180" />\
-				<h5>Hello <%= name %></h5>\
-				<dl class="dl-horizontal">\
-  					<dt>Role </dt><dd><%= participant_role %></dd>\
-  					<dt>Email </dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>\
-  					<dt>Company </dt><dd><%= company %></dd>\
-  					<dt>Team </dt><dd><%= team %></dd>\
-  					<dt>Studied </dt><dd><%= fieldOfStudy %></dd>\
-  					<dt>Degree </dt><dd><%= degreeProgram %></dd>\
-  					<dt>School </dt><dd><%= university %></dd>\
-  					<dt>Site </dt><dd><%= website %></dd>\
-				</dl>\
-				<a class="btn" href="<%= twitterUrl %>"><i class="icon-twitter"></i> Twitter</a> \
-				<a class="btn" href="<%= linkedinUrl %>"><i class="icon-linkedin"></i> LinkedIn</a>\
+				<div class="modal-header">\
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>\
+					<h3 id="myModalLabel"><%- name %></h3>\
+				</div>\
+				<div class="modal-body">\
+					<img class="thumbnail modal-profile-picture" src="<%= profile_picture %>&s=180" />\
+					<dl class="dl-horizontal">\
+	  					<dt>Role </dt><dd><%= participant_role %></dd>\
+	  					<dt>Email </dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>\
+	  					<dt>Company </dt><dd><%= company %></dd>\
+	  					<dt>Team </dt><dd><%= team %></dd>\
+	  					<dt>Studied </dt><dd><%= fieldOfStudy %></dd>\
+	  					<dt>Degree </dt><dd><%= degreeProgram %></dd>\
+	  					<dt>School </dt><dd><%= university %></dd>\
+	  					<dt>Site </dt><dd><%= website %></dd>\
+					</dl>\
+					<a class="btn" href="<%= twitterUrl %>"><i class="icon-twitter"></i> Twitter</a> \
+					<a class="btn" href="<%= linkedinUrl %>"><i class="icon-linkedin"></i> LinkedIn</a>\
+				</div>\
+				<div class="modal-footer">\
+					<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save Changes</button>\
+				</div>\
 				'),
 
 		initialize : function() {
+			$('#user-details').addClass('fade');
 			 this.$el.html('<h3>This section is restricted to members.</h3><ul id="user-list" class="thumbnails"></ul>');
 			 this.$ul = this.$('#user-list');
 			 this.collection.on('add', this.addOne, this);
@@ -76,7 +85,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			console.log(user.toJSON());
 			
     		$modal.addClass('modal');
-    		$modal.html('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>');
+    		$modal.html('');
     		//$modal.append('<img src="'+user.get("profile_picture")+'&s=204" />');
     		$modal.append(this.template_userView(user.toJSON()));
     		//$modal.append(form.el);
