@@ -20,12 +20,12 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 					<dl class="dl-horizontal">\
 	  					<dt>Role </dt><dd><%= participant_role %></dd>\
 	  					<dt>Email </dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>\
-	  					<dt>Company </dt><dd><%= company %></dd>\
-	  					<dt>Team </dt><dd><%= team %></dd>\
-	  					<dt>Studied </dt><dd><%= fieldOfStudy %></dd>\
-	  					<dt>Degree </dt><dd><%= degreeProgram %></dd>\
-	  					<dt>School </dt><dd><%= university %></dd>\
-	  					<dt>Site </dt><dd><%= website %></dd>\
+	  					<dt>Company </dt><dd><%= company ? company : "&nbsp;" %></dd>\
+	  					<dt>Team </dt><dd><%= team ? team : "&nbsp;" %></dd>\
+	  					<dt>Studied </dt><dd><%= fieldOfStudy ? fieldOfStudy : "&nbsp;" %></dd>\
+	  					<dt>Degree </dt><dd><%= degreeProgram ? degreeProgram : "&nbsp;" %></dd>\
+	  					<dt>School </dt><dd><%= university ? university : "&nbsp;" %></dd>\
+	  					<dt>Site </dt><dd><%= website ? website : "&nbsp;" %></dd>\
 					</dl>\
 					<a class="btn" href="<%= twitterUrl %>"><i class="icon-twitter"></i> Twitter</a> \
 					<a class="btn" href="<%= linkedinUrl %>"><i class="icon-linkedin"></i> LinkedIn</a>\
