@@ -30,9 +30,6 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 					<a class="btn" href="<%= twitterUrl %>"><i class="icon-twitter"></i> Twitter</a> \
 					<a class="btn" href="<%= linkedinUrl %>"><i class="icon-linkedin"></i> LinkedIn</a>\
 				</div>\
-				<div class="modal-footer">\
-					<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save Changes</button>\
-				</div>\
 				'),
 
 		initialize : function() {
