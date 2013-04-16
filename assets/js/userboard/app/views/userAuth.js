@@ -82,6 +82,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    		}).render();
 				    		var $modal = $('<div>');
 				    		$modal.addClass('modal');
+				    		$modal.addClass('fade');
 				    		$modal.html(form.el);
 				    		$modal.prepend('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>');
 				    		$modal.append('<div class="modal-footer">\
