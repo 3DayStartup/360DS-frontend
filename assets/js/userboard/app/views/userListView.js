@@ -4,10 +4,10 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		
 		el : $('#content'),
 		
-		template : _.template('<li data-id="<%= id %>" class="user-block <%= participant_role %>">\
-				<div class="user-block-profile-picture" style="background-image:url(<%= profile_picture %>&s=204);" alt="<%= name %> profiles picture"></div>\
+		template : _.template('<li data-id="<%= id %>" class="user-block <%= participantRole %>">\
+				<div class="user-block-profile-picture" style="background-image:url(<%= profilePicture %>&s=204);" alt="<%= name %> profiles picture"></div>\
 				<h5><%= name %></h5>\
-				<h6><%= participant_role %></h6>\
+				<h6><%= participantRole %></h6>\
 			</li>'),
 			
 		template_userView : _.template('\
@@ -16,9 +16,9 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 					<h3 id="myModalLabel"><%- name %></h3>\
 				</div>\
 				<div class="modal-body">\
-					<img class="thumbnail modal-profile-picture" src="<%= profile_picture %>&s=180" />\
+					<img class="thumbnail modal-profile-picture" src="<%= profilePicture %>&s=180" />\
 					<dl class="dl-horizontal">\
-	  					<dt>Role </dt><dd><%= participant_role %></dd>\
+	  					<dt>Role </dt><dd><%= participantRole %></dd>\
 	  					<dt>Email </dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>\
 	  					<dt>Company </dt><dd><%= company ? company : "&nbsp;" %></dd>\
 	  					<dt>Team </dt><dd><%= team ? team : "&nbsp;" %></dd>\
@@ -83,7 +83,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			
     		$modal.addClass('modal');
     		$modal.html('');
-    		//$modal.append('<img src="'+user.get("profile_picture")+'&s=204" />');
+    		//$modal.append('<img src="'+user.get("profilePicture")+'&s=204" />');
     		$modal.append(this.template_userView(user.toJSON()));
     		//$modal.append(form.el);
     		

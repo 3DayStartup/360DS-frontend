@@ -53,7 +53,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    		"name": user.name,
 				    		"email": "",
 				    		"providerId": user.provider+":"+user.id,
-				    		"profile_picture": "https://graph.facebook.com/"+user.username+"/picture?type=large"
+				    		"profilePicture": "https://graph.facebook.com/"+user.username+"/picture?type=large"
 				    	});
 				    	
 			    	} else if(user.provider === "github") {
@@ -61,7 +61,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    		"name": user.name,
 				    		"email": user.email,
 				    		"providerId": user.provider+":"+user.id,
-				    		"profile_picture": user.avatar_url
+				    		"profilePicture": user.avatar_url
 				    	});
 			    	}
 			    	var userExists = userList.where({"providerId": providerId});
