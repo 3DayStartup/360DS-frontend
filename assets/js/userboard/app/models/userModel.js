@@ -14,7 +14,8 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
         university: 		'Text',
         website:			{ validators: [ 'url'] },
         linkedinUrl:			'Text',
-        twitterUrl:			'Text'
+        twitterUrl:			'Text',
+        program:			{ type: 'Select', options: ['University of Texas at Houston Spring 2013', 'Retail Me Not 2013', 'Retail Me Not 2013'] },
         
         
 	},
