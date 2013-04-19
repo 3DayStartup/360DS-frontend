@@ -25,10 +25,10 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 	  					<dt>Studied </dt><dd><%= fieldOfStudy ? fieldOfStudy : "&nbsp;" %></dd>\
 	  					<dt>Degree </dt><dd><%= degreeProgram ? degreeProgram : "&nbsp;" %></dd>\
 	  					<dt>School </dt><dd><%= university ? university : "&nbsp;" %></dd>\
-	  					<dt>Site </dt><dd><%= website ? website : "&nbsp;" %></dd>\
+	  					<dt>Site </dt><dd><a href="<%= website %>" target="_blank"><%= website ? website : "&nbsp;" %></a></dd>\
 					</dl>\
-					<a class="btn" href="<%= twitterUrl %>"><i class="icon-twitter"></i> Twitter</a> \
-					<a class="btn" href="<%= linkedinUrl %>"><i class="icon-linkedin"></i> LinkedIn</a>\
+					<a class="btn" href="<%= twitterUrl %>" target="_blank"><i class="icon-twitter"></i> Twitter</a> \
+					<a class="btn" href="<%= linkedinUrl %>" target="_blank"><i class="icon-linkedin"></i> LinkedIn</a>\
 				</div>\
 				'),
 
