@@ -76,7 +76,7 @@ a {
 
 #user-details {
 	text-align: center;
-	width: 400px;
+	width: 450px;
 }
 #user-details dd {
 	text-align: left;
@@ -102,7 +102,7 @@ a {
 }
 
 .modal {
-	max-height: 85%;
+	max-height: 90%;
 	overflow: auto;
 }
 

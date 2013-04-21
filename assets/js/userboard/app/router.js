@@ -27,7 +27,8 @@ define([
 			"(/)user-board.html#user/:id" : "showUser",
 			//default
 			"": "index",
-			"home-2/": "index"
+			"home-2/": "index",
+			"(/)user-board(/)" : "index"
 		},
 		index: function(){
 			userListView = this.userListView = new UserListView({collection: this.userList});

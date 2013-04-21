@@ -8,7 +8,7 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
         email:      		{ validators: ['required', 'email'] },
         profilePicture: 	'Text',
         company: 		'Text',
-        team: 			{ type: 'Select', options: ['3DS [school name season year]1', '3DS [school name season year]2', '3DS [school name season year]3'] },
+        team: 			{ type: 'Select', options: ['3DS Houston Spring 2013', '3DS Retail Me Not 2013', '3DS Austin Spring 2013'] },
         fieldOfStudy: 		'Text',
         degreeProgram:		{ type: 'Select', options: ['High School', 'Associate', 'Bachelor', 'Master', 'Doctorate', 'Juris Doctorate'] },
         university: 		'Text',
