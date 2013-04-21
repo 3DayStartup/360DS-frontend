@@ -37,7 +37,6 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			 this.$el.html('<h3>This section is restricted to members.</h3><ul id="user-list" class="thumbnails"></ul>');
 			 this.$ul = this.$('#user-list');
 			 this.collection.on('add', this.addOne, this);
-		 	 this.collection.on('change', this.render, this);
 		 	 this.collection.on('reset', this.render, this);
 		 	 this.render();
 		},

@@ -85,8 +85,9 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 			    		userListView.renderByTeam(userExists[0].get("team"))
 			    	}
 
+			    	$('a[href="http://online.3daystartup.org/edit-profile/"]').unbind("click");
 			    	$('a[href="http://online.3daystartup.org/edit-profile/"]').on("click", function(event){
-						event.preventDefault();						
+						event.preventDefault();
 						var providerId = user.provider+":"+user.id;
 						var retrievedUser = userList.where({"providerId": providerId});
 						if(retrievedUser.length !== 0) {							
