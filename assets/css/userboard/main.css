@@ -82,7 +82,7 @@ a {
 	text-align: left;
 }
 
-.editProfile {
+#super-header .editProfile, #super-header .editProfile:hover {
 	
 	color:#222222
 	
