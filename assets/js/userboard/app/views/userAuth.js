@@ -1,5 +1,7 @@
-define(['jquery', 'underscore', 'backbone', 'backbone_forms', 'app/collections/userList', 'app/models/userModel',  'app/views/userView'], 
-function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
+define([
+	'jquery', 'underscore', 'backbone', 'backbone_forms',
+	'app/collections/userList', 'app/models/userModel',  'app/views/userView',  "app/views/userListView"], 
+function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListView) {
 	var UserAuth = Backbone.View.extend({
 		el: "body.page",
 		initialize: function(){
@@ -27,7 +29,13 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    // This is a bad hack. 
 				    // We should use a class to target the links
 				    $('a[href="http://online.3daystartup.org/edit-profile/"]').show();
-				    $('#content h3').hide();
+				    $('#content').show();
+				    $('.loginRequired').hide();				    
+
+				    if($('body').hasClass("home")) {
+				    	userList = new UserList();
+				    	userListView = new UserListView({collection: userList});
+				    }				    
 				    
 				  } else {
 				    $('#super-header .loggedIn').hide();
@@ -37,6 +45,10 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 				    // This is a bad hack. 
 				    // We should use a class to target the links
 				    $('a[href="http://online.3daystartup.org/edit-profile/"]').hide();
+
+				    $('#content').hide();
+				    $('#content').after("<h3 class='loginRequired'>You must login in order to view content.</h3>");
+
 				  }
 				});
 
@@ -70,6 +82,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			    		$('a[href="http://online.3daystartup.org/edit-profile/"]').hide();		    		
 			    	} else {
 			    		$('a[href="http://online.3daystartup.org/edit-profile/"]').show();
+			    		userListView.renderByTeam(userExists[0].get("team"))
 			    	}
 
 			    	$('a[href="http://online.3daystartup.org/edit-profile/"]').on("click", function(event){

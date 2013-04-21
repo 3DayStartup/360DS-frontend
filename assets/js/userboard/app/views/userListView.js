@@ -57,7 +57,18 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		events: {
 			"click .user-block": "userModal",
 		},
-		
+		renderByTeam: function(team) {
+			this.$el.html("<h3>This section is restricted to members.</h3>");
+			this.$ul.html("");
+			$("#page-loader").show();
+			var filteredList = this.collection.where({"team": team});
+			filteredList.forEach(this.addOne, this);
+			if (filteredList.length){
+				$("#page-loader").hide();
+			}
+			this.$el.append(this.$ul);
+			return this;
+		},		
 		addOne: function(userModel) {
 
 			var attributes = userModel.toJSON();

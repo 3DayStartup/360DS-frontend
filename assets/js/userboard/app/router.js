@@ -26,21 +26,19 @@ define([
 			"user/:id" : "showUser",
 			"(/)user-board.html#user/:id" : "showUser",
 			//default
-			"user-board/" : "userBoard",
-			"": "index"
+			"": "index",
+			"home-2/": "index"
 		},
 		index: function(){
+			userListView = this.userListView = new UserListView({collection: this.userList});
 		},
 		initialize: function(){
 			currentUser = this.currentUser = undefined;
-			userList = this.userList = userList = new UserList();
+			userList = this.userList = new UserList();
 			userAuth = this.userAuth = new UserAuth();
 		},
 		start: function() {
 			Backbone.history.start({pushState: true});
-		},
-		userBoard: function() {
-			this.userListView = new UserListView({collection: this.userList});
 		},
 		showUser: function(id) {
 		}
