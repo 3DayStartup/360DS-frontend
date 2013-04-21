@@ -27,6 +27,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 	  					<dt>School </dt><dd><%= university ? university : "&nbsp;" %></dd>\
 	  					<dt>Site </dt><dd><a href="<%= website %>" target="_blank"><%= website ? website : "&nbsp;" %></a></dd>\
 					</dl>\
+					<a class="btn editProfileWithinModal" href="http://online.3daystartup.org/edit-profile/" style="display:none;"><i class="icon-user	"></i>Edit Profile</a>\
 					<a class="btn" href="<%= twitterUrl %>" target="_blank"><i class="icon-twitter"></i> Twitter</a> \
 					<a class="btn" href="<%= linkedinUrl %>" target="_blank"><i class="icon-linkedin"></i> LinkedIn</a>\
 				</div>\
@@ -84,17 +85,21 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 
 			var userId = $userCard.data("id");
 			var user = this.collection.get(userId);
-
-			// var form = new Backbone.Form({
-        		// model: user
-    		// }).render();
-			
-			console.log(user.toJSON());
 			
     		$modal.addClass('modal');
     		$modal.html('');
     		//$modal.append('<img src="'+user.get("profilePicture")+'&s=204" />');
     		$modal.append(this.template_userView(user.toJSON()));
+    		if(currentUser && user.get("providerId") === (currentUser.provider+":"+currentUser.id) ) {
+    			$('.editProfileWithinModal').show();
+    			$('.editProfileWithinModal').on("click", function(event){
+    				event.preventDefault();
+    				$('.editProfile').click();
+    			});
+    		} else {
+    			$('.editProfileWithinModal').hide();
+    			$('.editProfileWithinModal').unbind("click");
+    		}
     		//$modal.append(form.el);
     		
     		//$modal.find("input").attr("readonly", "readonly");

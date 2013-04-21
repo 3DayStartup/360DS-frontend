@@ -11,7 +11,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 			var $loggedIn = $('<span class="loggedIn" style="display:none;"></span>');
 			// TODO: remove inline styles when ready
 			$notLoggedIn.append('<button class="login btn btn-primary" data-provider="facebook" ><i class="icon-facebook"></i> Facebook Login</button> <button class="login btn btn-primary" data-provider="github" ><i class="icon-github-alt"></i> Github Login</button>');
-			$loggedIn.append('<!--<span class="userInfo"></span>--> <a class="btn" href="http://online.3daystartup.org/edit-profile/"><i class="icon-user	"></i>Edit Profile</a> <button class="logout btn-mini btn-info">Logout</button>');
+			$loggedIn.append('<!--<span class="userInfo"></span>--> <a class="btn editProfile" href="http://online.3daystartup.org/edit-profile/"><i class="icon-user	"></i>Edit Profile</a> <button class="logout btn-mini btn-info">Logout</button>');
 			this.$('#super-header').append($notLoggedIn);
 			this.$('#super-header').append($loggedIn);
 
@@ -82,7 +82,9 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 			    		$('a[href="http://online.3daystartup.org/edit-profile/"]').hide();		    		
 			    	} else {
 			    		$('a[href="http://online.3daystartup.org/edit-profile/"]').show();
-			    		userListView.renderByTeam(userExists[0].get("team"))
+			    		if($('body').hasClass("home") || window.location.toString().indexOf("home") > 0 ) {
+			    			userListView.renderByTeam(userExists[0].get("team"))
+			    		}
 			    	}
 
 			    	$('a[href="http://online.3daystartup.org/edit-profile/"]').unbind("click");
