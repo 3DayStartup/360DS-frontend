@@ -4,7 +4,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		
 		el : $('#content'),
 		
-		template : _.template('<li data-id="<%= id %>" class="user-block <%= participantRole %>">\
+		template : _.template('<li data-id="<%= id %>" class="user-block <% print(participantRole.toLowerCase()) %>">\
 				<div class="user-block-profile-picture" style="background-image:url(<%= profilePicture %>&s=204);" alt="<%= name %> profiles picture"></div>\
 				<h5><%= name %></h5>\
 				<h6><%= participantRole %></h6>\
