@@ -21,7 +21,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 	  					<dt>Role </dt><dd><%= participantRole %></dd>\
 	  					<dt>Email </dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>\
 	  					<dt>Company </dt><dd><%= company ? company : "&nbsp;" %></dd>\
-	  					<dt>Team at 3DS weekend </dt><dd><%= team ? team : "&nbsp;" %></dd>\
+	  					<dt>Program </dt><dd><%= team ? team : "&nbsp;" %></dd>\
 	  					<dt>Studied </dt><dd><%= fieldOfStudy ? fieldOfStudy : "&nbsp;" %></dd>\
 	  					<dt>Degree </dt><dd><%= degreeProgram ? degreeProgram : "&nbsp;" %></dd>\
 	  					<dt>School </dt><dd><%= university ? university : "&nbsp;" %></dd>\
