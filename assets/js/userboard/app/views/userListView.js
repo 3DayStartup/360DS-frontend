@@ -21,7 +21,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 	  					<dt>Role </dt><dd><%= participantRole %></dd>\
 	  					<dt>Email </dt><dd><a href="mailto:<%= email %>"><%= email %></a></dd>\
 	  					<dt>Company </dt><dd><%= company ? company : "&nbsp;" %></dd>\
-	  					<dt>Program </dt><dd><%= team ? team : "&nbsp;" %></dd>\
+	  					<dt>Program </dt><dd><%= program ? program : "&nbsp;" %></dd>\
 	  					<dt>Studied </dt><dd><%= fieldOfStudy ? fieldOfStudy : "&nbsp;" %></dd>\
 	  					<dt>Degree </dt><dd><%= degreeProgram ? degreeProgram : "&nbsp;" %></dd>\
 	  					<dt>School </dt><dd><%= university ? university : "&nbsp;" %></dd>\
@@ -59,11 +59,11 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		events: {
 			"click .user-block": "userModal",
 		},
-		renderByTeam: function(team) {
+		renderByProgram: function(program) {
 			this.$el.html("<h3>This section is restricted to members.</h3>");
 			this.$ul.html("");
 			$("#page-loader").show();
-			var filteredList = this.collection.where({"team": team});
+			var filteredList = this.collection.where({"program": program});
 			filteredList.forEach(this.addOne, this);
 			if (filteredList.length){
 				$("#page-loader").hide();

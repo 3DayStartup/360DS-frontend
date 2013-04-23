@@ -83,7 +83,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 			    	} else {
 			    		$('a[href="http://online.3daystartup.org/edit-profile/"]').show();
 			    		if($('body').hasClass("home") || window.location.toString().indexOf("home") > 0 ) {
-			    			userListView.renderByTeam(userExists[0].get("team"))
+			    			userListView.renderByProgram(userExists[0].get("program"))
 			    		}
 			    	}
 
