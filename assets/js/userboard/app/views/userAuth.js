@@ -83,8 +83,8 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 			    	} else {
 			    		$('a[href="http://online.3daystartup.org/edit-profile/"]').show();
 			    		if($('body').hasClass("home") || window.location.toString().indexOf("home") > 0 ) {
-			    			userListView.renderByProgram(userExists[0].get("program"))
-			    		}
+			    			userListView.renderByProgram(userExists[0].get("program"));
+			    		}			    		
 			    	}
 
 			    	$('a[href="http://online.3daystartup.org/edit-profile/"]').unbind("click");
@@ -101,6 +101,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 				    		$modal.addClass('fade');
 				    		$modal.html(form.el);
 				    		$modal.prepend('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>');
+				    		$modal.append('Note: Program is a required attribute');
 				    		$modal.append('<div class="modal-footer">\
 												<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save Changes</button>\
 											</div>\
@@ -117,9 +118,12 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 							$modal.on('change', 'select', function(event) {
 								form.commit();
 							});
-
 						}						
 					});
+
+					if(userExists[0] && (userExists[0].get("program") === '' || userExists[0].get("program") === '[REQUIRED]') )  {
+		    			$('a[href="http://online.3daystartup.org/edit-profile/"]')[0].click()
+		    		}
 
 			    }
 			});			

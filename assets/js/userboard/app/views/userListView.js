@@ -37,7 +37,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 
 		initialize : function() {
 			$('#user-details').addClass('fade');
-			 this.$el.html('<h3>This section is restricted to members.</h3><ul id="user-list" class="thumbnails"></ul>');
+			 this.$el.html('<ul id="user-list" class="thumbnails"></ul>');
 			 this.$ul = this.$('#user-list');
 			 this.collection.on('add', this.addOne, this);
 		 	 this.collection.on('reset', this.render, this);
@@ -45,7 +45,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		},
 
 		render : function() {
-			this.$el.html("<h3>This section is restricted to members.</h3>");
+			this.$el.html("");
 			this.$ul.html("");
 			$("#page-loader").show();			
 			this.collection.forEach(this.addOne, this);
@@ -60,15 +60,17 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			"click .user-block": "userModal",
 		},
 		renderByProgram: function(program) {
-			this.$el.html("<h3>This section is restricted to members.</h3>");
+			this.$el.html('<h3>'+program+'</h3>');
 			this.$ul.html("");
 			$("#page-loader").show();
-			var filteredList = this.collection.where({"program": program});
-			filteredList.forEach(this.addOne, this);
-			if (filteredList.length){
-				$("#page-loader").hide();
+			if(program !== '' && program !== '[REQUIRED]') {
+				var filteredList = this.collection.where({"program": program});
+				filteredList.forEach(this.addOne, this);
+				if (filteredList.length){
+					$("#page-loader").hide();
+				}
+				this.$el.append(this.$ul);
 			}
-			this.$el.append(this.$ul);
 			return this;
 		},		
 		addOne: function(userModel) {
