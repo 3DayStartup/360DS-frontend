@@ -13,8 +13,8 @@ define(["jquery", "underscore", "backbone",  'backbone_forms'], function($, _, B
         degreeProgram:		{ type: 'Select', options: ['High School', 'Associate', 'Bachelor', 'Master', 'Doctorate', 'Juris Doctorate'] },
         university: 		'Text',
         website:			{ validators: [ 'url'] },
-        linkedinUrl:			'Text',
-        twitterUrl:			'Text'
+        linkedinUrl:			{ validators: [ 'url'] },
+        twitterUrl:			{ validators: [ 'url'] }
         
         
 	},
