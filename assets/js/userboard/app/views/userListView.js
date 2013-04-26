@@ -92,23 +92,23 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			
     		$modal.addClass('modal');
     		$modal.html('');
-    		//$modal.append('<img src="'+user.get("profilePicture")+'&s=204" />');
+    		
     		$modal.append(this.template_userView(user.toJSON()));
+    		$modal.modal();			
+
     		if(currentUser && user.get("providerId") === (currentUser.provider+":"+currentUser.id) ) {
     			$('.editProfileWithinModal').show();
     			$('.editProfileWithinModal').on("click", function(event){
     				event.preventDefault();
+
+    				// Hide any active modals, in lieu of activating the edit profile modal.
+    				$('.modal').modal('hide');
     				$('.editProfile').click();
     			});
     		} else {
     			$('.editProfileWithinModal').hide();
     			$('.editProfileWithinModal').unbind("click");
     		}
-    		//$modal.append(form.el);
-    		
-    		//$modal.find("input").attr("readonly", "readonly");
-    		//$modal.find("select").attr("disabled", "true");
-    		$modal.modal();			
 		},
 
 	});
