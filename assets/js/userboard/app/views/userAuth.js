@@ -35,6 +35,15 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 				    if($('body').hasClass("home")) {
 				    	userList = new UserList();
 				    	userListView = new UserListView({collection: userList});
+				    	userList.firebase.on('value', function(){
+				    		var user = currentUser;
+				    		var providerId = user.provider+":"+user.id;
+				    		var userExists = userList.where({"providerId": providerId});
+				    		if (userExists[0] && userExists[0].get('program')) {
+				    			userListView.renderByProgram(userExists[0].get("program"));		
+				    		}
+				    		
+				    	});				    	
 				    }				    
 				    
 				  } else {
