@@ -92,16 +92,6 @@
 
 	<?php if(is_front_page()) { ?>
 
-	
-		<div id="contact-us" class="group">
-			<p class="blurb <?php if($options['showIntroButton'] == 1) echo 'short'; else echo 'full'; ?>">
-				<?php echo $options['introtextarea']; ?>
-			</p>
-			<?php if($options['showIntroButton'] == 1) { ?>
-
-				<a href="<?php echo $options['mainbuttonlink']; ?>" class="contact-us btn" <?php if($options['introNewWindow'] == 1) echo 'target = "_blank"'; ?>><?php echo $options['mainbuttontext']; ?> <br /> <em><?php echo $options['mainbuttonsub']; ?></em></a>
-			<?php } ?>
-		</div>
 
 		<div id="homepage-widgets" class="widget-area group">
 			<?php if (!function_exists('dynamic_sidebar') || !dynamic_sidebar('Homepage Widgets')) : ?>
