@@ -110,11 +110,9 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 				    		$modal.addClass('fade');
 				    		$modal.html(form.el);
 				    		$modal.prepend('<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>');
-				    		$modal.append('Note: Program is a required attribute');
-				    		$modal.append('<div class="modal-footer">\
-												<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save Changes</button>\
-											</div>\
-											');
+				    		$modal.append('<div class="modal-footer">'+
+											'<button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Save Changes</button>'+
+											'</div>');
 				    		$modal.modal();				    		
 				    		form.on('blur', function(form) {
 				    			form.commit();
