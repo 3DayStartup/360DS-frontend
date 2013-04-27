@@ -45,14 +45,18 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		},
 
 		render : function() {
-			this.$el.html("");
+			this.$el.html("<h3>Oops you need to be part of a program.<br/>Please click edit profile and select one, thanks! (＾◡＾)</h3>");
 			this.$ul.html("");
-			$("#page-loader").show();			
-			this.collection.forEach(this.addOne, this);
-			if (this.collection.length){
-				$("#page-loader").hide();
-			}
-			this.$el.append(this.$ul);
+			// This function is deprecated. We do not want to show all users
+
+			
+			$('a[href="http://online.3daystartup.org/edit-profile/"]').unbind("click");
+	    	$('a[href="http://online.3daystartup.org/edit-profile/"]').on("click", function(event){
+	    		event.preventDefault();
+				location.reload();
+				return false;
+			});
+
 			return this;
 		},
 
@@ -63,7 +67,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 			this.$el.html('<h3>'+program+'</h3>');
 			this.$ul.html("");
 			$("#page-loader").show();
-			if(program !== '' && program !== '[REQUIRED]') {
+			if(program !== '') {
 				var filteredList = this.collection.where({"program": program});
 				filteredList.forEach(this.addOne, this);
 				if (filteredList.length){
