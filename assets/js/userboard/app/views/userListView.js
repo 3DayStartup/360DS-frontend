@@ -45,7 +45,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView) {
 		},
 
 		render : function() {
-			this.$el.html("<h3>Oops you need to be part of a program.<br/>Please click edit profile and select one, thanks! (＾◡＾)</h3>");
+			this.$el.html("<div id='page-loader'></div>");
 			this.$ul.html("");
 			// This function is deprecated. We do not want to show all users
 
