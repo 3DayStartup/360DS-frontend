@@ -1,3 +1,6 @@
+// Hack to fix login bug - should be correctly fixed later
+var click_login = false;
+
 define([
 	'jquery', 'underscore', 'backbone', 'backbone_forms',
 	'app/collections/userList', 'app/models/userModel',  'app/views/userView',  "app/views/userListView"], 
@@ -5,7 +8,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 	var UserAuth = Backbone.View.extend({
 		el: "body.page",
 		initialize: function(){
-
+			
 			var $header = $('#super-header');
 			var $notLoggedIn = $('<span class="notLoggedIn"></span>');
 			var $loggedIn = $('<span class="loggedIn" style="display:none;"></span>');
@@ -14,13 +17,20 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 			$loggedIn.append('<!--<span class="userInfo"></span>--> <a class="btn editProfile" href="http://online.3daystartup.org/edit-profile/"><i class="icon-user	"></i>Edit Profile</a> <button class="logout btn-mini btn-info">Logout</button>');
 			this.$('#super-header').append($notLoggedIn);
 			this.$('#super-header').append($loggedIn);
-
+			
 			
 			userRef = new Firebase('https://360ds.firebaseio.com');
 			authClient = new FirebaseAuthClient(userRef, function(error, user) {
+				 
+
 				  if (error) {
 				    // console.log(error);
 				  } else if (user) {
+					// Hack to fix login bug - should be correctly fixed later 
+					if(click_login) {
+					  	location.reload();
+					}
+				  	
 				  	currentUser = user;
 				    $('#super-header .loggedIn').show();
 				    $('#super-header .loggedIn .userInfo').text('User ID: ' + user.id + ', Provider: ' + user.provider);
@@ -143,6 +153,8 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 		},
 		login: function(event){
 			var provider = $(event.currentTarget).data("provider");
+			// Hack to avoid fixing bug
+			click_login = true;
 			authClient.login(provider);
 		},
 		logout: function(event){
