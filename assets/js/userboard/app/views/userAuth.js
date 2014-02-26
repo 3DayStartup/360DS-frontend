@@ -72,7 +72,7 @@ function($, _, Backbone, BackboneForms, UserList, UserModel, UserView, UserListV
 				});
 
 			// The best "convention" (hack) to wait for firebase's fetch to finish.
-			userList.firebase.on('value', function(snapshot){
+			userList.firebase.on('value', function(value){
 				var user = currentUser;
 				    
 			    if(typeof(user) !== "undefined" && typeof(user.provider) !== "undefined" ) {

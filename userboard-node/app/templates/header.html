@@ -1,0 +1,26 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">3 Day Startup</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#userboard">User Board</a></li>
+        <li><a href="#info">Info</a></li>
+        <li><a href="#successkit">Success Kit</a></li>
+        <li><a href="#meta3ds">Meta 3DS</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if (user) { %>
+        <li><a>Hi, <%= user.name %> | <i class="fa fa-<%= user.provider %>"></i></a></li>
+        <li><a href="#editprofile">Edit Profile</a></li>
+        <li><a href="#logout">Logout</a></li>
+        <% } else { %>
+        <li><a href="#loginfacebook"><i class="fa fa-facebook"></i> | Facebook Login</a></li>
+        <li><a href="#logintwitter"><i class="fa fa-twitter"></i> | Twitter Login</a></li>
+        <li><a href="#logingithub"><i class="fa fa-github"></i> | Github Login</a></li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
