@@ -71,34 +71,132 @@ App.Collections.Users = Backbone.Firebase.Collection.extend({
 
 'use strict';
 
-App.Views.Header = Backbone.View.extend({
-	el: $('div#header'),
+App.Views.EditProfile = Backbone.Modal.extend({
+	template: JST['app/templates/editProfile.html'],
+	
+	cancelEl: '.bbm-button',
 
-	template: JST['app/templates/header.html'],
+	events: {
+		'click .save': '_save'
+	},
 
-	render: function() {
-		this.$el.html(this.template({ user: this.user }));
-		return this;
+	setModelData: function(model){
+		this.model = model;
+		this.$('h3').html(this.model.get('name'));
+		this.form = new Backbone.Form({
+		    model: this.model
+		}).render();
+		this.$('.profile').append(this.form.el);
+	},
+
+	_save: function(){
+		var data = this.form.getValue();
+		this.model.set(data);
 	}
 });
 /* global App:true, Backbone:true, JST:true */
 
 'use strict';
 
-App.Views.Profile = Backbone.View.extend({
-	el: $('body'),
-
-	template: JST['app/templates/profile.html'],
+App.Views.Header = Backbone.View.extend({
+	template: JST['app/templates/header.html'],
 
 	render: function() {
-		debugger;
 		this.$el.html(this.template({ model: this.model }));
-		var form = new Backbone.Form({
-			model: this.model
-		}).render();
-		this.$('.modal-body').append(form.el);
 		return this;
 	}
+});
+/* global App:true, Backbone:true, JST:true, Firebase:true, FirebaseSimpleLogin:true */
+
+'use strict';
+
+App.Views.Home = Backbone.View.extend({
+	el: $('div#app'),
+
+	template: JST['app/templates/home.html'],
+
+	events: {
+		'click .editProfile': '_editProfile'
+	},
+
+	initialize: function(){
+		this.firebase = new Firebase(App.FirebaseUrl);
+		var self = this;
+
+		// Authenticates app and user
+		// callback is called when login gets in/out or fails.
+		this.auth = new FirebaseSimpleLogin(this.firebase, function(error, user){
+			if (error){
+				console.log(error);
+			}
+			if (user){
+				user.providerId = user.provider + ':' + user.id;
+				// delete social id so firebase can set its own id
+				delete user.id;
+			}
+
+			// Create model from user data
+			self.model = user ? new App.Models.User(user) : user;
+			self.render();
+		});
+
+		// Gets the users
+		// callback is called when ever the collection is loaded, and then
+		// whenever the collection is updated.
+		this.collection = new App.Collections.Users();
+		this.collection.firebase.on('value', function(){
+
+			// See if current user is already in firebase
+			var existingModel = self.collection.find(function(u){
+				return u.get('providerId') === self.model.get('providerId');
+			});
+
+			if (existingModel){
+				self.model = existingModel;
+			} else {
+
+				// If not in firebase, add it
+				self.collection.add(self.model);
+			}
+
+			self.render();
+		});
+	},
+
+	logout: function(){
+		this.auth.logout();
+	},
+
+	login: function(provider){
+		this.auth.login(provider);
+	},
+
+	_editProfile: function(){
+		var editProfile = new App.Views.EditProfile();
+		this.$('div#modalContent').html(editProfile.render().el);
+		editProfile.setModelData(this.model);
+	},
+
+	render: function(){
+		this.$el.html(this.template());
+		this._renderHeader();
+		// this._renderContent();
+		return this;
+	},
+
+	_renderHeader: function(){
+		this.headerView = this.headerView || new App.Views.Header();
+		this.headerView.$el = this.$('div#header');
+		this.headerView.model = this.model;
+		this.headerView.render();
+	}
+
+	// _renderContent: function(){
+	// 	this.contentView = this.contentView || new App.Views.Content();
+	// 	this.contentView.$el = this.$('div#content');
+	// 	this.contentView.collection = this.collection;
+	// 	this.contentView.render();
+	// }
 });
 /* global App:true, Backbone:true, Firebase:true, FirebaseSimpleLogin:true */
 
@@ -107,80 +205,34 @@ App.Views.Profile = Backbone.View.extend({
 var Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
-		'loginfacebook': 'loginFacebook',
-		'logintwitter': 'loginTwitter',
-		'logingithub': 'loginGithub',
 		'logout': 'logout',
-		'editprofile': 'editProfile'
-	},
-
-	initialize: function(){
-		var firebase = new Firebase(App.FirebaseUrl);
-		App.Auth = new FirebaseSimpleLogin(firebase, function(error, user){
-			if (error){
-				console.log(error);
-			}
-			if (user){
-				user.providerId = user.provider + ':' + user.id;
-				delete user.id;
-			}
-			App.CurrentUser = user;
-			App.Router.home();
-		});
-
-		App.Users = new App.Collections.Users();
-		App.Users.firebase.on('value', this._firebaseUpdated);
+		'loginFacebook': 'loginFacebook',
+		'loginTwitter': 'loginTwitter',
+		'loginGithub': 'loginGithub'
 	},
 
 	home: function(){
-		this._renderHeader();
-	},
-
-	loginFacebook: function(){
-		App.Auth.login('facebook');
-		this.home();
-	},
-
-	loginTwitter: function(){
-		App.Auth.login('twitter');
-		this.home();
-	},
-
-	loginGithub: function(){
-		App.Auth.login('github');
-		this.home();
+		this.homeView = this.homeView || new App.Views.Home();
 	},
 
 	logout: function(){
-		App.Auth.logout();
 		this.home();
+		this.homeView.logout();
 	},
 
-	editProfile: function(){
-		debugger;
-		var userModel = App.Users.find(function(u) { return u.isCurrent; });
-		var profileView = new App.Views.Profile({ model: userModel });
-		profileView.render();
+	loginFacebook: function(){
+		this.home();
+		this.homeView.login('facebook');
 	},
 
-	_renderHeader: function(){
-		this.headerView = this.headerView || new App.Views.Header();
-		this.headerView.user = App.CurrentUser;
-		this.headerView.render();
+	loginTwitter: function(){
+		this.home();
+		this.homeView.login('twitter');
 	},
 
-	_firebaseUpdated: function(){
-		var userModel = App.Users.find(function(u){
-			return u.get('providerId') === App.CurrentUser.providerId;
-		});
-
-		if (!userModel) {
-			userModel = new App.Models.User(App.CurrentUser);
-			userModel.isCurrent = true;
-			App.Users.add(userModel);
-		} else {
-			userModel.isCurrent = true;
-		}
+	loginGithub: function(){
+		this.home();
+		this.homeView.login('github');
 	}
 
 });

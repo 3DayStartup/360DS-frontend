@@ -11,14 +11,14 @@
         <li><a href="#meta3ds">Meta 3DS</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <% if (user) { %>
-        <li><a>Hi, <%= user.name %> | <i class="fa fa-<%= user.provider %>"></i></a></li>
-        <li><a href="#editprofile">Edit Profile</a></li>
+        <% if (model) { %>
+        <li><a>Hi, <%= model.get('name') %> | <i class="fa fa-<%= model.get('provider') %>"></i></a></li>
+        <li><a href="#" class="editProfile">Edit Profile</a></li>
         <li><a href="#logout">Logout</a></li>
         <% } else { %>
-        <li><a href="#loginfacebook"><i class="fa fa-facebook"></i> | Facebook Login</a></li>
-        <li><a href="#logintwitter"><i class="fa fa-twitter"></i> | Twitter Login</a></li>
-        <li><a href="#logingithub"><i class="fa fa-github"></i> | Github Login</a></li>
+        <li><a href="#loginFacebook"><i class="fa fa-facebook"></i> | Facebook Login</a></li>
+        <li><a href="#loginTwitter"><i class="fa fa-twitter"></i> | Twitter Login</a></li>
+        <li><a href="#loginGithub"><i class="fa fa-github"></i> | Github Login</a></li>
         <% } %>
       </ul>
     </div>
