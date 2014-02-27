@@ -10,6 +10,11 @@
         <li><a href="#successkit">Success Kit</a></li>
         <li><a href="#meta3ds">Meta 3DS</a></li>
       </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+      </form>
       <ul class="nav navbar-nav navbar-right">
         <% if (model) { %>
         <li><a>Hi, <%= model.get('name') %> | <i class="fa fa-<%= model.get('provider') %>"></i></a></li>
@@ -17,7 +22,6 @@
         <li><a href="#logout">Logout</a></li>
         <% } else { %>
         <li><a href="#loginFacebook"><i class="fa fa-facebook"></i> | Facebook Login</a></li>
-        <li><a href="#loginTwitter"><i class="fa fa-twitter"></i> | Twitter Login</a></li>
         <li><a href="#loginGithub"><i class="fa fa-github"></i> | Github Login</a></li>
         <% } %>
       </ul>

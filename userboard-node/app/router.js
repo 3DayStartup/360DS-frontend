@@ -1,4 +1,4 @@
-/* global App:true, Backbone:true, Firebase:true, FirebaseSimpleLogin:true */
+/* global App:true, Backbone:true */
 
 'use strict';
 
@@ -7,7 +7,6 @@ var Router = Backbone.Router.extend({
 		'': 'home',
 		'logout': 'logout',
 		'loginFacebook': 'loginFacebook',
-		'loginTwitter': 'loginTwitter',
 		'loginGithub': 'loginGithub'
 	},
 
@@ -23,11 +22,6 @@ var Router = Backbone.Router.extend({
 	loginFacebook: function(){
 		this.home();
 		this.homeView.login('facebook');
-	},
-
-	loginTwitter: function(){
-		this.home();
-		this.homeView.login('twitter');
 	},
 
 	loginGithub: function(){

@@ -1,0 +1,67 @@
+<div>
+	<% if (!model) { %>
+	<div class="alert alert-info">You must login in order to view content.</div>
+	<% } else if (!model.get('program')) { %>
+	<div class="alert alert-warning">You need to be part of a program. Click on Edit Profile to join a program.</div>
+	<% } else if (models) { %>
+	<div class="container">
+	<% for (var i = 0; i < models.length; i = i + 4) { %>
+		<div class="row">
+
+			<% if (models[i]) { %>
+		  <div class="col-xs-6 col-md-3">
+		    <div class="thumbnail">
+		      <img class="img-circle" src='<%= models[i].get('profilePicture') %>'/>
+		      <div class="caption">
+		        <h4><%= models[i].get('name') %></h4>
+		        <h5><%= models[i].get('participantRole') || "No role selected" %></h5>
+		        <h5><%= models[i].get('program') || "No program selected" %></h5>
+		      </div>
+		    </div>
+		  </div>
+		  <% } %>
+
+		  <% if (models[i + 1]) { %>
+		  <div class="col-xs-6 col-md-3">
+		    <div class="thumbnail">
+		      <img class="img-circle" src='<%= models[i + 1].get('profilePicture') %>'/>
+		      <div class="caption">
+		        <h4><%= models[i + 1].get('name') %></h4>
+		        <h5><%= models[i + 1].get('participantRole') || "No role selected" %></h5>
+		        <h5><%= models[i + 1].get('program') || "No program selected" %></h5>
+		      </div>
+		    </div>
+		  </div>
+		  <% } %>
+
+		  <% if (models[i + 2]) { %>
+		  <div class="col-xs-6 col-md-3">
+		    <div class="thumbnail">
+		      <img class="img-circle" src='<%= models[i + 2].get('profilePicture') %>'/>
+		      <div class="caption">
+		        <h4><%= models[i + 2].get('name') %></h4>
+		        <h5><%= models[i + 2].get('participantRole') || "No role selected" %></h5>
+		        <h5><%= models[i + 2].get('program') || "No program selected" %></h5>
+		      </div>
+		    </div>
+		  </div>
+		  <% } %>
+
+		  <% if (models[i + 3]) { %>
+		  <div class="col-xs-6 col-md-3">
+		    <div class="thumbnail">
+		      <img class="img-circle" src='<%= models[i + 3].get('profilePicture') %>'/>
+		      <div class="caption">
+		        <h4><%= models[i + 3].get('name') %></h4>
+		        <h5><%= models[i + 3].get('participantRole') || "No role selected" %></h5>
+		        <h5><%= models[i + 3].get('program') || "No program selected" %></h5>
+		      </div>
+		    </div>
+		  </div>
+		  <% } %>
+
+		</div>
+	<% } %>
+	</div>
+	<% }  %>
+</div>

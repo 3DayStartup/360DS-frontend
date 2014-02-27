@@ -58,11 +58,6 @@ App.Models.User = Backbone.Model.extend({
 });
 /* global App:true, Backbone:true */
 
-// App.Collections.Users = Backbone.Collection.extend({
-// 	model: App.Models.User,
-// 	firebase: new Backbone.Firebase(App.FirebaseUrl)
-// });
-
 App.Collections.Users = Backbone.Firebase.Collection.extend({
 	model: App.Models.User,
 	firebase: App.FirebaseUrl
@@ -116,7 +111,20 @@ App.Views.Home = Backbone.View.extend({
 	template: JST['app/templates/home.html'],
 
 	events: {
-		'click .editProfile': '_editProfile'
+		'click .editProfile': '_editProfile',
+		'keyup input': '_search'
+	},
+
+	_search: function(){
+		var searchText = (this.$('input').val() || '').toLowerCase();
+
+		if (this.collection){
+			var filteredModels = this.collection.filter(function(model){
+				var s = JSON.stringify(model.attributes).toLowerCase();
+				return s.indexOf(searchText) !== -1;
+			});
+			this._renderUserBoard(filteredModels);
+		}
 	},
 
 	initialize: function(){
@@ -135,8 +143,10 @@ App.Views.Home = Backbone.View.extend({
 				delete user.id;
 			}
 
-			// Create model from user data
-			self.model = user ? new App.Models.User(user) : user;
+			self.model = (user ? new App.Models.User(user) : user);
+			if (self.model){
+				self._syncWithCollection(self);
+			}
 			self.render();
 		});
 
@@ -145,22 +155,30 @@ App.Views.Home = Backbone.View.extend({
 		// whenever the collection is updated.
 		this.collection = new App.Collections.Users();
 		this.collection.firebase.on('value', function(){
-
-			// See if current user is already in firebase
-			var existingModel = self.collection.find(function(u){
-				return u.get('providerId') === self.model.get('providerId');
-			});
-
-			if (existingModel){
-				self.model = existingModel;
-			} else {
-
-				// If not in firebase, add it
-				self.collection.add(self.model);
-			}
-
+			self._syncWithCollection(self);
 			self.render();
 		});
+	},
+
+	_syncWithCollection: function(self){
+
+		// See if current user is already in firebase
+		var existingModel = self.collection.find(function(u){
+			return u.get('providerId') === self.model.get('providerId');
+		});
+
+		if (existingModel){
+			self.model = existingModel;
+		} else {
+
+			// If not in firebase, add it. Set profile picture first
+			if (self.model.get('provider') === 'facebook'){
+				self.model.set('profilePicture', 'https://graph.facebook.com/' + self.model.get('username') + '/picture?type=large');
+			} else if (self.model.get('provider') === 'github'){
+				self.model.set('profilePicture', self.model.get('avatar_url'));
+			}
+			self.collection.add(self.model);
+		}
 	},
 
 	logout: function(){
@@ -172,15 +190,25 @@ App.Views.Home = Backbone.View.extend({
 	},
 
 	_editProfile: function(){
-		var editProfile = new App.Views.EditProfile();
-		this.$('div#modalContent').html(editProfile.render().el);
-		editProfile.setModelData(this.model);
+		var editProfileView = new App.Views.EditProfile();
+		this.$('div#modalContent').html(editProfileView.render().el);
+		editProfileView.setModelData(this.model);
 	},
 
 	render: function(){
 		this.$el.html(this.template());
 		this._renderHeader();
-		// this._renderContent();
+
+		// Filter by current user's program
+		if (this.collection && this.model){
+			var self = this;
+			this._renderUserBoard(this.collection.filter(function(model){
+				return model.get('program') === self.model.get('program');
+			}));
+		} else {
+			this._renderUserBoard();
+		}
+
 		return this;
 	},
 
@@ -189,16 +217,32 @@ App.Views.Home = Backbone.View.extend({
 		this.headerView.$el = this.$('div#header');
 		this.headerView.model = this.model;
 		this.headerView.render();
-	}
+	},
 
-	// _renderContent: function(){
-	// 	this.contentView = this.contentView || new App.Views.Content();
-	// 	this.contentView.$el = this.$('div#content');
-	// 	this.contentView.collection = this.collection;
-	// 	this.contentView.render();
-	// }
+	_renderUserBoard: function(models){
+		this.userBoardView = this.userBoardView || new App.Views.UserBoard();
+		this.userBoardView.$el = this.$('div#userBoard');
+		this.userBoardView.model = this.model;
+		this.userBoardView.models = models;
+		this.userBoardView.render();
+	}
 });
-/* global App:true, Backbone:true, Firebase:true, FirebaseSimpleLogin:true */
+/* global App:true, Backbone:true, JST:true */
+
+'use strict';
+
+App.Views.UserBoard = Backbone.View.extend({
+	template: JST['app/templates/userBoard.html'],
+
+	render: function() {
+		this.$el.html(this.template({
+			model: this.model,
+			models: this.models
+		}));
+		return this;
+	}
+});
+/* global App:true, Backbone:true */
 
 'use strict';
 
@@ -207,7 +251,6 @@ var Router = Backbone.Router.extend({
 		'': 'home',
 		'logout': 'logout',
 		'loginFacebook': 'loginFacebook',
-		'loginTwitter': 'loginTwitter',
 		'loginGithub': 'loginGithub'
 	},
 
@@ -223,11 +266,6 @@ var Router = Backbone.Router.extend({
 	loginFacebook: function(){
 		this.home();
 		this.homeView.login('facebook');
-	},
-
-	loginTwitter: function(){
-		this.home();
-		this.homeView.login('twitter');
 	},
 
 	loginGithub: function(){
