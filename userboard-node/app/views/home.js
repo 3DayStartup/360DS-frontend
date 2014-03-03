@@ -12,6 +12,30 @@ App.Views.Home = Backbone.View.extend({
 		'keyup input': '_search'
 	},
 
+	initialize: function(){
+		var self = this;
+
+		// let's create the firebase reference
+		this.firebaseRef = new Firebase('https://360ds.firebaseio.com');
+
+		// called when collection is fully loaded
+		this.firebaseRef.on('value', function(data){
+			debugger;
+		});
+
+		this.firebaseRef.on('child_added', function(data){
+			debugger;
+		});
+
+		this.firebaseRef.on('child_removed', function(data){
+			debugger;
+		});
+
+		this.firebaseRef.on('child_changed', function(data){
+			debugger;
+		});
+	},
+
 	_search: function(){
 		var searchText = (this.$('input').val() || '').toLowerCase();
 
@@ -51,9 +75,14 @@ App.Views.Home = Backbone.View.extend({
 		// callback is called when ever the collection is loaded, and then
 		// whenever the collection is updated.
 		this.collection = new App.Collections.Users();
+
 		this.collection.firebase.on('value', function(){
 			self._syncWithCollection(self);
 			self.render();
+		});
+
+		this.collection.firebase.on('child_changed', function(data){
+			debugger;
 		});
 	},
 
