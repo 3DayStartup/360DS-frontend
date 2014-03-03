@@ -25,67 +25,70 @@ __p += '\n\t        <li><a>Hi, ' +
  } else { ;
 __p += '\n\t        <li><a href="#" class="loginFacebook"><i class="fa fa-facebook"></i> | Facebook Login</a></li>\n\t        <li><a href="#" class="loginGithub"><i class="fa fa-github"></i> | Github Login</a></li>\n\t        ';
  } ;
-__p += '\n\t      </ul>\n\t    </div>\n\t  </div>\n\t</nav>\n\t<!-- BOARD -->\n\t<div id="userBoard">\n\t\t';
- if (!user) { ;
-__p += '\n\t\t<div class="alert alert-info">You must login in order to view content.</div>\n\t\t';
- } else if (!model || !model.get('program')) { ;
-__p += '\n\t\t<div class="alert alert-warning">You need to be part of a program. Click on Edit Profile to join a program.</div>\n\t\t';
- } else if (models) { ;
-__p += '\n\t\t<div class="container">\n\t\t';
+__p += '\n\t      </ul>\n\t    </div>\n\t  </div>\n\t</nav>\n\t<!-- BOARD -->\n\t<div id="alertContent"></div>\n\t<!-- BOARD -->\n\t<div id="userBoard"></div>\n\t<!-- MODAL -->\n\t<div id="modalContent"></div>\n</div>';
+
+}
+return __p
+};
+
+this["JST"]["app/templates/userBoard.html"] = function(obj) {
+obj || (obj = {});
+var __t, __p = '', __e = _.escape, __j = Array.prototype.join;
+function print() { __p += __j.call(arguments, '') }
+with (obj) {
+__p += '<div class="container">\n';
  for (var i = 0; i < models.length; i = i + 4) { ;
-__p += '\n\t\t\t<div class="row">\n\n\t\t\t\t';
+__p += '\n\t<div class="row">\n\n\t\t';
  if (models[i]) { ;
-__p += '\n\t\t\t  <div class="col-xs-6 col-md-3">\n\t\t\t    <div class="thumbnail">\n\t\t\t      <img class="img-circle" src=\'' +
+__p += '\n\t  <div class="col-xs-6 col-md-3">\n\t    <div class="thumbnail">\n\t      <img class="img-circle" src=\'' +
 ((__t = ( models[i].get('profilePicture') )) == null ? '' : __t) +
-'\'/>\n\t\t\t      <div class="caption">\n\t\t\t        <h4>' +
+'\'/>\n\t      <div class="caption">\n\t        <h4>' +
 ((__t = ( models[i].get('name') )) == null ? '' : __t) +
-'</h4>\n\t\t\t        <h5>' +
+'</h4>\n\t        <h5>' +
 ((__t = ( models[i].get('participantRole') || "No role selected" )) == null ? '' : __t) +
-'</h5>\n\t\t\t        <h5>' +
+'</h5>\n\t        <h5>' +
 ((__t = ( models[i].get('program') || "No program selected" )) == null ? '' : __t) +
-'</h5>\n\t\t\t      </div>\n\t\t\t    </div>\n\t\t\t  </div>\n\t\t\t  ';
+'</h5>\n\t      </div>\n\t    </div>\n\t  </div>\n\t  ';
  } ;
-__p += '\n\n\t\t\t  ';
+__p += '\n\n\t  ';
  if (models[i + 1]) { ;
-__p += '\n\t\t\t  <div class="col-xs-6 col-md-3">\n\t\t\t    <div class="thumbnail">\n\t\t\t      <img class="img-circle" src=\'' +
+__p += '\n\t  <div class="col-xs-6 col-md-3">\n\t    <div class="thumbnail">\n\t      <img class="img-circle" src=\'' +
 ((__t = ( models[i + 1].get('profilePicture') )) == null ? '' : __t) +
-'\'/>\n\t\t\t      <div class="caption">\n\t\t\t        <h4>' +
+'\'/>\n\t      <div class="caption">\n\t        <h4>' +
 ((__t = ( models[i + 1].get('name') )) == null ? '' : __t) +
-'</h4>\n\t\t\t        <h5>' +
+'</h4>\n\t        <h5>' +
 ((__t = ( models[i + 1].get('participantRole') || "No role selected" )) == null ? '' : __t) +
-'</h5>\n\t\t\t        <h5>' +
+'</h5>\n\t        <h5>' +
 ((__t = ( models[i + 1].get('program') || "No program selected" )) == null ? '' : __t) +
-'</h5>\n\t\t\t      </div>\n\t\t\t    </div>\n\t\t\t  </div>\n\t\t\t  ';
+'</h5>\n\t      </div>\n\t    </div>\n\t  </div>\n\t  ';
  } ;
-__p += '\n\n\t\t\t  ';
+__p += '\n\n\t  ';
  if (models[i + 2]) { ;
-__p += '\n\t\t\t  <div class="col-xs-6 col-md-3">\n\t\t\t    <div class="thumbnail">\n\t\t\t      <img class="img-circle" src=\'' +
+__p += '\n\t  <div class="col-xs-6 col-md-3">\n\t    <div class="thumbnail">\n\t      <img class="img-circle" src=\'' +
 ((__t = ( models[i + 2].get('profilePicture') )) == null ? '' : __t) +
-'\'/>\n\t\t\t      <div class="caption">\n\t\t\t        <h4>' +
+'\'/>\n\t      <div class="caption">\n\t        <h4>' +
 ((__t = ( models[i + 2].get('name') )) == null ? '' : __t) +
-'</h4>\n\t\t\t        <h5>' +
+'</h4>\n\t        <h5>' +
 ((__t = ( models[i + 2].get('participantRole') || "No role selected" )) == null ? '' : __t) +
-'</h5>\n\t\t\t        <h5>' +
+'</h5>\n\t        <h5>' +
 ((__t = ( models[i + 2].get('program') || "No program selected" )) == null ? '' : __t) +
-'</h5>\n\t\t\t      </div>\n\t\t\t    </div>\n\t\t\t  </div>\n\t\t\t  ';
+'</h5>\n\t      </div>\n\t    </div>\n\t  </div>\n\t  ';
  } ;
-__p += '\n\n\t\t\t  ';
+__p += '\n\n\t  ';
  if (models[i + 3]) { ;
-__p += '\n\t\t\t  <div class="col-xs-6 col-md-3">\n\t\t\t    <div class="thumbnail">\n\t\t\t      <img class="img-circle" src=\'' +
+__p += '\n\t  <div class="col-xs-6 col-md-3">\n\t    <div class="thumbnail">\n\t      <img class="img-circle" src=\'' +
 ((__t = ( models[i + 3].get('profilePicture') )) == null ? '' : __t) +
-'\'/>\n\t\t\t      <div class="caption">\n\t\t\t        <h4>' +
+'\'/>\n\t      <div class="caption">\n\t        <h4>' +
 ((__t = ( models[i + 3].get('name') )) == null ? '' : __t) +
-'</h4>\n\t\t\t        <h5>' +
+'</h4>\n\t        <h5>' +
 ((__t = ( models[i + 3].get('participantRole') || "No role selected" )) == null ? '' : __t) +
-'</h5>\n\t\t\t        <h5>' +
+'</h5>\n\t        <h5>' +
 ((__t = ( models[i + 3].get('program') || "No program selected" )) == null ? '' : __t) +
-'</h5>\n\t\t\t      </div>\n\t\t\t    </div>\n\t\t\t  </div>\n\t\t\t  ';
+'</h5>\n\t      </div>\n\t    </div>\n\t  </div>\n\t  ';
  } ;
-__p += '\n\n\t\t\t</div>\n\t\t';
+__p += '\n\n\t</div>\n';
  } ;
-__p += '\n\t\t</div>\n\t\t';
- }  ;
-__p += '\n\t</div>\n\t<!-- MODAL -->\n\t<div id="modalContent"></div>\n</div>';
+__p += '\n</div>';
 
 }
 return __p

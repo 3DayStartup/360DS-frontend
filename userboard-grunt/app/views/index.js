@@ -20,14 +20,6 @@ App.Views.Index = Backbone.View.extend({
 
 		this.firebase = new Firebase('https://360ds.firebaseio.com');
 
-		// _onFirebaseUpdate is called when the collection is loaded
-		this.firebase.on('value', this._onFirebaseUpdate, this._cancelCallback, this);
-
-		// _onFirebaseUpdate is called when any item of the collection is updated
-		this.firebase.on('child_changed', this._onFirebaseUpdate, this._cancelCallback, this);
-
-		this.collection = new App.Collections.Users([], { firebase: this.firebase });
-
 		this.auth = new FirebaseSimpleLogin(this.firebase, function(error, user){
 			if (error){
 				console.log(error);
@@ -50,9 +42,18 @@ App.Views.Index = Backbone.View.extend({
 					self.authUser.profilePicture = user.avatar_url;
 				}
 
+				// _onFirebaseUpdate is called when the collection is loaded
+				self.firebase.on('value', self._onFirebaseUpdate, self._cancelCallback, self);
+
+				// _onFirebaseUpdate is called when any item of the collection is updated
+				self.firebase.on('child_changed', self._onFirebaseUpdate, self._cancelCallback, self);
+
+				self.collection = new App.Collections.Users([], { firebase: self.firebase });
+
 			// user is logged out
 			} else {
 				delete self.authUser;
+				delete self.model;
 			}
 
 			self.render();
@@ -61,17 +62,17 @@ App.Views.Index = Backbone.View.extend({
 
 	_search: function(){
 		var search = (this.$('input').val() || '').toLowerCase();
-		this.render(search);
+		this._renderUserBoard(search);
 	},
 
 	_onFirebaseUpdate: function(){
 		this.render();
 	},
 
-	render: function(search){
+	render: function(){
 		var self = this;
 
-		// this sets the model, if the authenticated user
+		// this sets the model if the authenticated user
 		// already is in firebase.
 		if (!this.model && this.authUser && this.collection){
 			this.model = this.collection.find(function(model){
@@ -79,29 +80,31 @@ App.Views.Index = Backbone.View.extend({
 			});
 		}
 
-		// if search defined then show the matching models
-		var models = null;
-		if (this.collection){
-			if (search){
-				models = this.collection.filter(function(model){
-					var s = JSON.stringify(model.attributes).toLowerCase();
-					return s.indexOf(search) !== -1;
-				});
-			// if no search defined, show the users in the same program
-			} else if (this.model) {
-				models = this.collection.filter(function(model){
-					return model.get('program') === self.model.get('program');
-				});
-			}
+		this.$el.html(this.template({ user: this.authUser }));
+		this._renderUserBoard();
+
+		// and yet, these ones can be improved a little...
+		if (!this.authUser){
+			this.$('div#alertContent').html('<div class="alert alert-warning">You must login in order to view content.</div>');
+		} else if (!this.model || !this.model.get('program')){
+			this.$('div#alertContent').html('<div class="alert alert-warning">You need to be part of a program. Click on Edit Profile to join a program.</div>');
+		} else {
+			this.$('div#alertContent').html('');
 		}
-
-		this.$el.html(this.template({
-			user: this.authUser,
-			model: this.model,
-			models: models
-		}));
-
+		
 		return this;
+	},
+
+	_renderUserBoard: function(search){
+		if (this.model && this.collection){
+			this.userBoardView = this.userBoardView || new App.Views.UserBoard();
+			this.userBoardView.$el = this.$('div#userBoard');
+			this.userBoardView.model = this.model;
+			this.userBoardView.collection = this.collection;
+			this.userBoardView.render(search);
+		} else {
+			this.$('div#userBoard').html('');
+		}
 	},
 
 	_cancelCallback: function(error){
